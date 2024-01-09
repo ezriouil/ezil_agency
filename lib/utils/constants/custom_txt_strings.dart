@@ -1,0 +1,3 @@
+class CustomTextStrings {
+  CustomTextStrings._();
+}
