@@ -75,7 +75,6 @@ class CustomAnimationScreen extends Responsive {
               child: CustomOutlinedButton(
                   text: secondActionText!,
                   onClick: onSecondActionClick!,
-                  transparentBorder: true,
                   width: getWidth(context)),
             ),
         ],

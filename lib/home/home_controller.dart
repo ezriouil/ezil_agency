@@ -1,10 +1,17 @@
+import 'package:ezil_agency/utils/constants/custom_colors.dart';
+import 'package:ezil_agency/utils/constants/custom_sizes.dart';
 import 'package:ezil_agency/utils/theme/theme_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
-  late final RxBool isHovering, showFloatingActionButton, themeSwitcher;
+  late final RxBool isHovering,
+      showFloatingActionButton,
+      themeSwitcher,
+      isHoveringFirstPlan,
+      isHoveringSecondPlan,
+      isHoveringLastPlan;
   late final RxString currentHoverItem;
   late final ScrollController scrollController;
 
@@ -17,6 +24,9 @@ class HomeController extends GetxController {
     scrollController = ScrollController();
     showFloatingActionButton = false.obs;
     themeSwitcher = false.obs;
+    isHoveringFirstPlan = false.obs;
+    isHoveringSecondPlan = false.obs;
+    isHoveringLastPlan = false.obs;
     manageScrollController();
     init();
   }
@@ -24,11 +34,31 @@ class HomeController extends GetxController {
   // - - - - - - - - - - - - - - - - - - INIT - - - - - - - - - - - - - - - - - -  //
   init() async {}
 
-  // - - - - - - - - - - - - - - - - - - UPDATE HOVER STATE - - - - - - - - - - - - - - - - - -  //
+  // - - - - - - - - - - - - - - - - - - UPDATE HOVER STATES - - - - - - - - - - - - - - - - - -  //
   onUpdateHoverState(bool hover) => isHovering.value = hover;
 
+  onUpdateHoverFirstPlanState(bool hover) => isHoveringFirstPlan.value = hover;
+
+  onUpdateHoverSecondPlanState(bool hover) =>
+      isHoveringSecondPlan.value = hover;
+
+  onUpdateHoverLastPlanState(bool hover) => isHoveringLastPlan.value = hover;
+
   // - - - - - - - - - - - - - - - - - - UPDATE UPGRADE UI SWITCH BUTTON - - - - - - - - - - - - - - - - - -  //
-  onUpdateCurrentUpdateUi(bool switched) {
+  onUpdateCurrentUpdateUi(bool switched) async {
+    Get.snackbar("Nouveau Thème",
+        "s'il vous plaît attendez, nous sommes en train de changer la couleur du thème",
+        icon: Icon(
+            Get.isDarkMode
+                ? Icons.light_mode_outlined
+                : Icons.dark_mode_outlined,
+            size: 30,
+            color: Get.isDarkMode ? CustomColors.WHITE : CustomColors.BLACK),
+        colorText: Get.isDarkMode ? CustomColors.WHITE : CustomColors.BLACK,
+        duration: const Duration(milliseconds: 1000),
+        margin: const EdgeInsets.all(CustomSizes.SPACE_DEFAULT),
+        overlayBlur: 8);
+    await Future.delayed(const Duration(milliseconds: 1100));
     themeSwitcher.value = switched;
     themeSwitcher.isTrue
         ? Get.changeTheme(ThemeApp.darkTheme)
@@ -71,6 +101,9 @@ class HomeController extends GetxController {
   void dispose() {
     isHovering.close();
     currentHoverItem.close();
+    isHoveringFirstPlan.close();
+    isHoveringSecondPlan.close();
+    isHoveringLastPlan.close();
     super.dispose();
   }
 }

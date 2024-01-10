@@ -15,7 +15,8 @@ class CustomColors{
   static const PRIMARY_DARK = Color(0xFF137dc5);
 
   static const RED = Color(0xFFEF1C2A);
-  static const GREEN= Color(0xFF077907);
+  static const GREEN_DARK= Color(0xFF077907);
+  static const GREEN_LIGHT= Color(0xFF00DC00);
   static const YELLOW_DARK= Color(0xFFFFF441);
   static const YELLOW_LIGHT= Color(0xFFFFD600);
   static const BLUE= Color(0xE22091FF);
