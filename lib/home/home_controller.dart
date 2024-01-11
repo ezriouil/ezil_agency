@@ -11,7 +11,9 @@ class HomeController extends GetxController {
       themeSwitcher,
       isHoveringFirstPlan,
       isHoveringSecondPlan,
-      isHoveringLastPlan;
+      isHoveringLastPlan,
+      isHoveringWhatsappIcon;
+
   late final RxString currentHoverItem;
   late final ScrollController scrollController;
 
@@ -27,6 +29,7 @@ class HomeController extends GetxController {
     isHoveringFirstPlan = false.obs;
     isHoveringSecondPlan = false.obs;
     isHoveringLastPlan = false.obs;
+    isHoveringWhatsappIcon = false.obs;
     manageScrollController();
     init();
   }
@@ -39,10 +42,11 @@ class HomeController extends GetxController {
 
   onUpdateHoverFirstPlanState(bool hover) => isHoveringFirstPlan.value = hover;
 
-  onUpdateHoverSecondPlanState(bool hover) =>
-      isHoveringSecondPlan.value = hover;
+  onUpdateHoverSecondPlanState(bool hover) => isHoveringSecondPlan.value = hover;
 
   onUpdateHoverLastPlanState(bool hover) => isHoveringLastPlan.value = hover;
+
+  onUpdateHoverWhatsappIconState(bool hover) => isHoveringWhatsappIcon.value = hover;
 
   // - - - - - - - - - - - - - - - - - - UPDATE UPGRADE UI SWITCH BUTTON - - - - - - - - - - - - - - - - - -  //
   onUpdateCurrentUpdateUi(bool switched) async {
@@ -80,19 +84,19 @@ class HomeController extends GetxController {
   // - - - - - - - - - - - - - - - - - - PROJECTS BACKGROUND  - - - - - - - - - - - - - - - - - -  //
   final projectsBackground = [
     /*------------- web sites images -------------*/
-    "assets/images/web_site/ecommerce_web.jpeg",
-    "assets/images/web_site/food_web.jpeg",
     "assets/images/web_site/hotel_web.jpeg",
+    "assets/images/web_site/ecommerce_web.jpeg",
     "assets/images/web_site/sport_web.jpeg",
+    "assets/images/web_site/food_web.jpeg",
     /*------------- mobile apps images -------------*/
     "assets/images/mobile_app/clothes_app.png",
     "assets/images/mobile_app/coffee_app.png",
     "assets/images/mobile_app/food_app.jpg",
     "assets/images/mobile_app/hotels_app.png",
     /*------------- web apps images -------------*/
-    "assets/images/web_app/coffee_web_app.jpg",
     "assets/images/web_app/ecommerce_web_app.png",
     "assets/images/web_app/food_web_app.png",
+    "assets/images/web_app/coffee_web_app.jpg",
     "assets/images/web_app/hotel_web_app.jpeg",
   ];
 

@@ -3,6 +3,7 @@ import 'package:ezil_agency/common/widgets/custom_grid_view.dart';
 import 'package:ezil_agency/common/widgets/custom_outlined_button.dart';
 import 'package:ezil_agency/common/widgets/custom_pack_item_tile.dart';
 import 'package:ezil_agency/common/widgets/custom_project_cover.dart';
+import 'package:ezil_agency/common/widgets/custom_service_item.dart';
 import 'package:ezil_agency/common/widgets/custom_service_tile.dart';
 import 'package:ezil_agency/common/widgets/custom_text_anim_wave.dart';
 import 'package:ezil_agency/home/home_controller.dart';
@@ -25,75 +26,70 @@ class WebHomeScreen extends Responsive {
     // - - - - - - - - - - - - - - - - - - INSTANCE FROM THE CONTROLLER - - - - - - - - - - - - - - - - - -  //
     final HomeController controller = Get.put(HomeController());
     return Scaffold(
-        body: SingleChildScrollView(
-          controller: controller.scrollController,
-          child: Column(
-            children: [
-              /* ------------------------------------------ TOP BAR ------------------------------------------ */
-              Row(
-                children: [
-                  Image.asset(
-                    isDark(context)
-                        ? CustomIconStrings.APP_LOGO_LIGHT
-                        : CustomIconStrings.APP_LOGO_DARK,
-                    height: 80,
-                    width: 200,
-                  ),
-                  const Spacer(),
-                  Row(
-                    children: [
-                      Text("Home",
-                          style: Theme.of(context).textTheme.titleLarge),
-                      const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                      Text("Services",
-                          style: Theme.of(context).textTheme.titleLarge),
-                      const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                      Text("About us",
-                          style: Theme.of(context).textTheme.titleLarge),
-                      const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                      Text("Projects",
-                          style: Theme.of(context).textTheme.titleLarge),
-                    ],
-                  ),
-                  const Spacer(),
-                  CustomElevatedButton(
-                    text: "Free consulting",
-                    onClick: () {},
-                    width: 150,
-                    withDefaultPadding: false,
-                  ),
-                  const SizedBox(width: CustomSizes.SPACE_DEFAULT),
-                  WidgetAnimator(
-                      atRestEffect: WidgetRestingEffects.pulse(
-                          duration: const Duration(seconds: 6)),
-                      child: Obx(
-                        () => Switch(
-                            value: controller.themeSwitcher.value,
-                            activeColor: primaryColor(context),
-                            autofocus: true,
-                            focusColor: primaryColor(context).withOpacity(0.2),
-                            inactiveThumbColor: primaryColor(context),
-                            thumbIcon: MaterialStateProperty.all(Icon(
-                                controller.themeSwitcher.value
-                                    ? Icons.light_mode_outlined
-                                    : Iconsax.moon,
-                                color: darkDarkLightLightColor(context))),
-                            inactiveTrackColor: darkDarkLightLightColor(context),
-                            onChanged: controller.onUpdateCurrentUpdateUi
-                            ),
-                      ))
-                ],
-              ),
+      body: SingleChildScrollView(
+        controller: controller.scrollController,
+        child: Column(
+          children: [
+            /* ------------------------------------------ TOP BAR ------------------------------------------ */
+            Row(
+              children: [
+                Image.asset(
+                  isDark(context)
+                      ? CustomIconStrings.APP_LOGO_LIGHT
+                      : CustomIconStrings.APP_LOGO_DARK,
+                  height: 80,
+                  width: 200,
+                ),
+                const Spacer(),
+                Row(
+                  children: [
+                    Text("Home", style: Theme.of(context).textTheme.titleLarge),
+                    const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                    Text("Services",
+                        style: Theme.of(context).textTheme.titleLarge),
+                    const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                    Text("About us",
+                        style: Theme.of(context).textTheme.titleLarge),
+                    const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                    Text("Projects",
+                        style: Theme.of(context).textTheme.titleLarge),
+                  ],
+                ),
+                const Spacer(),
+                CustomElevatedButton(
+                  text: "Contactez-nous",
+                  onClick: () {},
+                  width: 150,
+                  withDefaultPadding: false,
+                ),
+                const SizedBox(width: CustomSizes.SPACE_DEFAULT),
+                WidgetAnimator(
+                    atRestEffect: WidgetRestingEffects.pulse(
+                        duration: const Duration(seconds: 6)),
+                    child: Obx(
+                      () => Switch(
+                          value: controller.themeSwitcher.value,
+                          activeColor: primaryColor(context),
+                          autofocus: true,
+                          focusColor: primaryColor(context).withOpacity(0.2),
+                          inactiveThumbColor: primaryColor(context),
+                          thumbIcon: MaterialStateProperty.all(Icon(
+                              controller.themeSwitcher.value
+                                  ? Icons.light_mode_outlined
+                                  : Iconsax.moon,
+                              color: darkDarkLightLightColor(context))),
+                          inactiveTrackColor: darkDarkLightLightColor(context),
+                          onChanged: controller.onUpdateCurrentUpdateUi),
+                    ))
+              ],
+            ),
 
-              /* ------------------------------------------ SPACER ------------------------------------------ */
-              const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
-
-              /* ------------------------------------------ PADDING ------------------------------------------ */
+            /* ------------------------------------------ PADDING ------------------------------------------ */
             Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
+              padding: const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_SECTIONS *2),
               child: Column(
                 children: [
+                  
                   /* ------------------------------------------ TITLE + ANIMATION ------------------------------------------ */
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,8 +104,7 @@ class WebHomeScreen extends Responsive {
                                     .headlineMedium!
                                     .copyWith(fontSize: 60)),
                             const SizedBox(
-                                height:
-                                    CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                             Text(
                                 "Notre objectif est de conquérir nos clients, de les fidéliser et d'en faire des ambassadeurs.",
                                 style: Theme.of(context)
@@ -122,7 +117,7 @@ class WebHomeScreen extends Responsive {
                                 atRestEffect: WidgetRestingEffects.size(
                                     duration: const Duration(seconds: 3)),
                                 child: CustomElevatedButton(
-                                  text: "Get started",
+                                  text: "Notre Services",
                                   onClick: () {},
                                   width: 150,
                                   withDefaultPadding: false,
@@ -160,8 +155,7 @@ class WebHomeScreen extends Responsive {
                           ?.copyWith(fontSize: 40)),
 
                   /* ------------------------------------------ SPACER ------------------------------------------ */
-                  const SizedBox(
-                      height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
 
                   /* ------------------------------------------ DIGITAL OFFERS ------------------------------------------ */
                   const Row(
@@ -196,10 +190,6 @@ class WebHomeScreen extends Responsive {
                                   "Amplify your brand's reach with our advertising expertise. As a dynamic agency, we specialize in crafting impactful campaigns that resonate across diverse platforms. Elevate your brand visibility and engagement")),
                     ],
                   ),
-
-                  /* ------------------------------------------ SPACER ------------------------------------------ */
-                  const SizedBox(
-                      height: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
                 ],
               ),
             ),
@@ -209,19 +199,16 @@ class WebHomeScreen extends Responsive {
               width: getWidth(context),
               padding: const EdgeInsets.all(CustomSizes.SPACE_DEFAULT),
               decoration: BoxDecoration(
-                  color: primaryColor(context),
-                  border:
-                      Border.all(width: 0.5, color: CustomColors.GREY_DARK),
-                  borderRadius: BorderRadius.circular(
-                      CustomSizes.SPACE_BETWEEN_ITEMS / 2)),
+                color: primaryColor(context),
+                border: Border.all(width: 0.5, color: CustomColors.GREY_DARK),
+              ),
               child: Column(
                 children: [
                   Text("Transformative Digital offerings",
                       style: Theme.of(context)
                           .textTheme
                           .headlineLarge
-                          ?.copyWith(
-                              fontSize: 40, color: CustomColors.WHITE)),
+                          ?.copyWith(fontSize: 40, color: CustomColors.WHITE)),
                   const SizedBox(height: CustomSizes.SPACE_DEFAULT),
                   const Row(
                     children: [
@@ -248,10 +235,64 @@ class WebHomeScreen extends Responsive {
               ),
             ),
 
-            /* ------------------------------------------ SPACER ------------------------------------------ */
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
+            /* ------------------------------------------ OUR DIGITAL SUCCESS ------------------------------------------ */
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS * 3,
+                  horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS * 10),
+              child: Column(
+                children: [
+                  Text("Notre Spécialité Numérique",
+                      style: Theme.of(context).textTheme.headlineLarge),
 
-            /* ------------------------------------------ GRID VIEW ------------------------------------------ */
+                  /* ------------------------------------------ SPACER ------------------------------------------ */
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                  Text("Pour plus d'informations, contactez-nous",
+                      style: Theme.of(context).textTheme.titleMedium),
+
+                  /* ------------------------------------------ SPACER ------------------------------------------ */
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                  const Row(
+                    children: [
+                      Expanded(
+                          child: CustomServiceItem(
+                              imgUrl: "assets/images/mobile_app/web_design.png",
+                              header: "Web Design",
+                              title:
+                                  "Mobile Application Mastery: Crafting Innovative Solutions")),
+                      SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS / 2),
+                      Expanded(
+                          child: CustomServiceItem(
+                              imgUrl: "assets/images/mobile_app/web_app.png",
+                              header: "Web App",
+                              title:
+                                  "Mobile Application Mastery: Crafting Innovative Solutions")),
+                    ],
+                  ),
+                  const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+                  const Row(
+                    children: [
+                      Expanded(
+                          child: CustomServiceItem(
+                              imgUrl: "assets/images/mobile_app/ui_ux.jpg",
+                              header: "UI/UX Design",
+                              title:
+                                  "Mobile Application Mastery: Crafting Innovative Solutions")),
+                      SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS / 2),
+                      Expanded(
+                          child: CustomServiceItem(
+                              imgUrl:
+                                  "assets/images/mobile_app/social_media_marketing.jpg",
+                              header: "Marketing Digital",
+                              title:
+                                  "Mobile Application Mastery: Crafting Innovative Solutions")),
+                    ],
+                  )
+                ],
+              ),
+            ),
+
+            /* ------------------------------------------ GRID VIEW TITLE ------------------------------------------ */
             Text("Notre Projects Digital",
                 style: Theme.of(context)
                     .textTheme
@@ -261,55 +302,54 @@ class WebHomeScreen extends Responsive {
             /* ------------------------------------------ SPACER ------------------------------------------ */
             const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
 
-            /* ------------------------------------------ GRID VIEW ------------------------------------------ */
+            /* ------------------------------------------ GRID VIEW SUBTITLE ------------------------------------------ */
             Text(
                 "Notre équipe vous accompagne et assure un suivi client de qualité.",
                 style: Theme.of(context).textTheme.titleMedium),
 
-            /* ------------------------------------------ SPACER ------------------------------------------ */
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
-
             /* ------------------------------------------ GRID VIEW ------------------------------------------ */
-            CustomGridView(
-                itemsInRow: 4,
-                spaceBetweenRows: CustomSizes.SPACE_BETWEEN_ITEMS / 2,
-                spaceBetweenColumns: CustomSizes.SPACE_BETWEEN_SECTIONS * 2,
-                itemsHeight: 300,
-                count: controller.projectsBackground.length,
-                itemBuilder: (BuildContext context, int index) => Obx(
-                      () => CustomProjectCover(
-                          onClick: () {},
-                          onHover: (hover, img) {
-                            controller.onUpdateHoverState(hover);
-                            controller.currentHoverItem.value = img;
-                          },
-                          image: controller.projectsBackground[index],
-                          child: controller.projectsBackground[index] ==
-                                  controller.currentHoverItem.value
-                              ? Container(
-                                  decoration: BoxDecoration(
-                                      color: grayColor(context)
-                                          .withOpacity(0.3),
-                                      borderRadius: BorderRadius.circular(
-                                          CustomSizes.SPACE_DEFAULT)),
-                                  child: Center(
-                                      child: TextAnimator("See more ...",
-                                          atRestEffect:
-                                              WidgetRestingEffects.wave(),
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge
-                                              ?.copyWith(
-                                                  color:
-                                                      CustomColors.WHITE))),
-                                )
-                              : const Placeholder(
-                                  color: Colors.transparent,
-                                )),
-                    )),
-
-            /* ------------------------------------------ SPACER ------------------------------------------ */
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS * 3),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS * 3,
+                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
+              child: CustomGridView(
+                  itemsInRow: 4,
+                  spaceBetweenRows: CustomSizes.SPACE_BETWEEN_ITEMS,
+                  spaceBetweenColumns: CustomSizes.SPACE_BETWEEN_SECTIONS * 2,
+                  itemsHeight: 230,
+                  count: controller.projectsBackground.length,
+                  itemBuilder: (BuildContext context, int index) => Obx(
+                        () => CustomProjectCover(
+                            onClick: () {},
+                            onHover: (hover, img) {
+                              controller.onUpdateHoverState(hover);
+                              controller.currentHoverItem.value = img;
+                            },
+                            image: controller.projectsBackground[index],
+                            child: controller.projectsBackground[index] ==
+                                    controller.currentHoverItem.value
+                                ? Container(
+                                    decoration: BoxDecoration(
+                                        color:
+                                            grayColor(context).withOpacity(0.3),
+                                        borderRadius: BorderRadius.circular(
+                                            CustomSizes.SPACE_DEFAULT)),
+                                    child: Center(
+                                        child: TextAnimator("See more ...",
+                                            atRestEffect:
+                                                WidgetRestingEffects.wave(),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge
+                                                ?.copyWith(
+                                                    color:
+                                                        CustomColors.WHITE))),
+                                  )
+                                : const Placeholder(
+                                    color: Colors.transparent,
+                                  )),
+                      )),
+            ),
             Text("Price Plan",
                 style: Theme.of(context)
                     .textTheme
@@ -319,12 +359,10 @@ class WebHomeScreen extends Responsive {
             Text("Creative Solutions, Transparent Pricing",
                 style: Theme.of(context).textTheme.headlineLarge),
 
-            /* ------------------------------------------ SPACER ------------------------------------------ */
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
-
             /* ------------------------------------------ PACKAGES ------------------------------------------ */
             Padding(
               padding: const EdgeInsets.symmetric(
+                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS,
                   horizontal: CustomSizes.SPACE_DEFAULT),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -335,23 +373,20 @@ class WebHomeScreen extends Responsive {
                           horizontal: CustomSizes.SPACE_BETWEEN_ITEMS,
                           vertical: CustomSizes.SPACE_DEFAULT),
                       decoration: BoxDecoration(
-                          border:
-                              Border.all(color: darkLightColor(context)),
-                          borderRadius: BorderRadius.circular(
-                              CustomSizes.SPACE_DEFAULT)),
+                          border: Border.all(color: darkLightColor(context)),
+                          borderRadius:
+                              BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
                       child: Column(
                         children: [
                           Text("Prime",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineMedium),
+                              style:
+                                  Theme.of(context).textTheme.headlineMedium),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                           Text(
                               "Tout ce dont vous avez besoin pour créer votre site Web",
                               textAlign: TextAlign.center,
-                              style:
-                                  Theme.of(context).textTheme.bodyMedium),
+                              style: Theme.of(context).textTheme.bodyMedium),
                           const SizedBox(height: CustomSizes.SPACE_DEFAULT),
                           Text("499 Dh / mois",
                               style: Theme.of(context)
@@ -363,37 +398,49 @@ class WebHomeScreen extends Responsive {
                           Divider(color: grayColor(context)),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                           CustomPackItemTile(
+                          CustomPackItemTile(
                               title: "Conception De site-web",
-                               bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Professionnel Site-web",bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Nom De Domaine .MA .COM etc", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Professionnel Site-web",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Nom De Domaine .MA .COM etc",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(
                               title: "Hébergement Rapide SSD"),
                           const CustomPackItemTile(
                               title: "Site-web sécurisé via SSL"),
                           const CustomPackItemTile(
                               title: "Site-web Responsive (Adaptable)"),
-                           CustomPackItemTile(
-                              title: "Professionnel Email",bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Thème Clair + Sombre", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Professionnel Email",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Thème Clair + Sombre",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(title: "1 Langue"),
                           const CustomPackItemTile(
                               title: "Instagram Professionnel"),
                           const CustomPackItemTile(
                               title: "Facebook Professionnel"),
-                           CustomPackItemTile(
-                              title: "Publication Par Semaine",bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Publication Par Semaine",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(
                               title: "Livraison très rapide"),
-                          const CustomPackItemTile(
-                              title: "Assistance 24/7"),
+                          const CustomPackItemTile(title: "Assistance 24/7"),
                           const CustomPackItemTile(title: "Logo Gratuit"),
-                           CustomPackItemTile(
-                              title: "Carte De Visite Gratuit", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Carte De Visite Gratuit",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
                           WidgetAnimator(
@@ -416,8 +463,8 @@ class WebHomeScreen extends Responsive {
                       decoration: BoxDecoration(
                           color: primaryColor(context),
                           border: Border.all(color: primaryColor(context)),
-                          borderRadius: BorderRadius.circular(
-                              CustomSizes.SPACE_DEFAULT)),
+                          borderRadius:
+                              BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
                       child: Column(
                         children: [
                           Text("Business",
@@ -440,113 +487,136 @@ class WebHomeScreen extends Responsive {
                                   .textTheme
                                   .headlineLarge
                                   ?.copyWith(
-                                      fontSize: 40,
-                                      color: CustomColors.WHITE)),
+                                      fontSize: 40, color: CustomColors.WHITE)),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          Divider(
-                              color: CustomColors.WHITE.withOpacity(0.5)),
+                          Divider(color: CustomColors.WHITE.withOpacity(0.5)),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                           const CustomPackItemTile(
+                          const CustomPackItemTile(
                             title: "Conception De site-web",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Conception D'application Web",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Professionnel Site-web",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Professionnel Application Web",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Nom De Domaine .MA .COM etc",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Hébergement Rapide SSD",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Site-web Sécurisé Via SSL",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Application Web Sécurisé Via SSL",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Site-web Responsive (Adaptable)",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Application Web Responsive (Adaptable)",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Mise à Jour",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Panneau D'administration",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Thème Clair + Sombre",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Commande Via WhatsApp",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "2 Langues",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Email Professionnel",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Instagram Professionnel",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Facebook Professionnel",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Publication Par Semaine",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Annonce Par Semaine",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Analyse D'annonce",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Livraison très rapide",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
-                           const CustomPackItemTile(
+                          const CustomPackItemTile(
                             title: "Assistance 24/7",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Logo Gratuit",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Carte De Visite Gratuit",
-                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,
+                            colorIcon: CustomColors.WHITE,
                           ),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
@@ -559,8 +629,7 @@ class WebHomeScreen extends Responsive {
                                   style: ElevatedButton.styleFrom(
                                       elevation: 0,
                                       backgroundColor: CustomColors.WHITE,
-                                      foregroundColor:
-                                          primaryColor(context))))
+                                      foregroundColor: primaryColor(context))))
                         ],
                       ),
                     ),
@@ -572,23 +641,20 @@ class WebHomeScreen extends Responsive {
                           horizontal: CustomSizes.SPACE_BETWEEN_ITEMS,
                           vertical: CustomSizes.SPACE_DEFAULT),
                       decoration: BoxDecoration(
-                          border:
-                              Border.all(color: darkLightColor(context)),
-                          borderRadius: BorderRadius.circular(
-                              CustomSizes.SPACE_DEFAULT)),
+                          border: Border.all(color: darkLightColor(context)),
+                          borderRadius:
+                              BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
                       child: Column(
                         children: [
                           Text("Start-up",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineMedium),
+                              style:
+                                  Theme.of(context).textTheme.headlineMedium),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                           Text(
                               "Bénéficiez de performances optimisées et de ressources dédiées",
                               textAlign: TextAlign.center,
-                              style:
-                                  Theme.of(context).textTheme.bodyMedium),
+                              style: Theme.of(context).textTheme.bodyMedium),
                           const SizedBox(height: CustomSizes.SPACE_DEFAULT),
                           Text("1499 Dh / mois",
                               style: Theme.of(context)
@@ -600,20 +666,34 @@ class WebHomeScreen extends Responsive {
                           Divider(color: grayColor(context)),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                           CustomPackItemTile(
-                              title: "Conception De site-web", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Conception D'application Web", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Conception D'application Mobile", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Professionnel Site-web", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Professionnel Application Web", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Professionnel Application Mobile", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Nom De Domaine .MA .COM etc", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Conception De site-web",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Conception D'application Web",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Conception D'application Mobile",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Professionnel Site-web",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Professionnel Application Web",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Professionnel Application Mobile",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Nom De Domaine .MA .COM etc",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(
                               title: "Hébergement Rapide SSD"),
                           const CustomPackItemTile(
@@ -623,44 +703,67 @@ class WebHomeScreen extends Responsive {
                           const CustomPackItemTile(
                               title: "Site-web Responsive (Adaptable)"),
                           const CustomPackItemTile(
-                              title:
-                                  "Application Web Responsive (Adaptable)"),
+                              title: "Application Web Responsive (Adaptable)"),
                           const CustomPackItemTile(
                               title:
                                   "Application Mobile Responsive (Adaptable)"),
                           const CustomPackItemTile(title: "Mise à Jour"),
-                           CustomPackItemTile(
-                              title: "Panneau D'administration", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Thème Clair + Sombre", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Commande Online", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Paiement Online", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Commande Via WhatsApp", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(title: "+3 Langues" ,bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Email Professionnel", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Panneau D'administration",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Thème Clair + Sombre",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Commande Online",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Paiement Online",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Commande Via WhatsApp",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "+3 Langues",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Email Professionnel",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(
                               title: "Instagram Professionnel"),
                           const CustomPackItemTile(
                               title: "Facebook Professionnel"),
-                           CustomPackItemTile(
-                              title: "Publication Par Semaine", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Annonce Par Semaine", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
-                           CustomPackItemTile(
-                              title: "Analyse D'annonce", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Publication Par Semaine",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Annonce Par Semaine",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Analyse D'annonce",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(
                               title: "Livraison très rapide"),
-                          const CustomPackItemTile(
-                              title: "Assistance 24/7"),
-                           CustomPackItemTile(
-                              title: "Boutique Sur Google", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          const CustomPackItemTile(title: "Assistance 24/7"),
+                          CustomPackItemTile(
+                              title: "Boutique Sur Google",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(title: "Logo Gratuit"),
-                           CustomPackItemTile(
-                              title: "Carte De Visite Gratuit", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                          CustomPackItemTile(
+                              title: "Carte De Visite Gratuit",
+                              bgColor: primaryColor(context)
+                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
                           WidgetAnimator(
@@ -678,28 +781,63 @@ class WebHomeScreen extends Responsive {
               ),
             ),
 
-            /* ------------------------------------------ SPACER ------------------------------------------ */
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
-            Text("Languages",
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineMedium!
-                    .copyWith(fontSize: 60)),
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-            Text("Technologies we are using for development",
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium!
-                    .copyWith(fontSize: 20)),
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+            /* ------------------------------------------ PACKAGES ------------------------------------------ */
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: CustomSizes.SPACE_BETWEEN_SECTIONS, horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS*4),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ListTile(
+                      leading: Image.asset(
+                        "assets/icons/reactive_icon.png",
+                        height: 100,
+                        width: 100,
+                      ),
+                      title: Text("Réactivité",
+                          style: Theme.of(context).textTheme.headlineMedium),
+                      subtitle: Text(
+                          "Notre équipe se charge de vous donner une réponse rapide sous 48h maximum.",
+                          style: Theme.of(context).textTheme.titleSmall),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      leading: Image.asset(
+                        "assets/icons/performance_icon.png",
+                        height: 100,
+                        width: 100,
+                      ),
+                      title: Text("Performance",
+                          style: Theme.of(context).textTheme.headlineMedium),
+                      subtitle: Text(
+                          "Nous étudions et analysons votre projet digital en mobilisant l’ensemble de nos compétences.",
+                          style: Theme.of(context).textTheme.titleSmall),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      leading: Image.asset(
+                        "assets/icons/professional_icon.png",
+                        height: 100,
+                        width: 100,
+                      ),
+                      title: Text("Professionnalisme",
+                          style: Theme.of(context).textTheme.headlineMedium),
+                      subtitle: Text(
+                          "Notre équipe a à cœur de réaliser des projets de qualité pour ses clients.",
+                          style: Theme.of(context).textTheme.titleSmall),
+                    ),
+                  ),
+                ],
+              ),
+            ),
 
-             /* ------------------------------------------ SPACER ------------------------------------------ */
-            const SizedBox(height: CustomSizes.SPACE_DEFAULT),
-
-             /* ------------------------------------------ PROGRAMMING LANGUAGES ------------------------------------------ */
+            /* ------------------------------------------ PROGRAMMING LANGUAGES ------------------------------------------ */
             Container(
               color: CustomColors.BLACK,
-              padding: const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_SECTIONS * 1.5),
+              padding: const EdgeInsets.symmetric(
+                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS * 2,
+                  horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
               child: Row(
                 children: [
                   Expanded(
@@ -717,11 +855,8 @@ class WebHomeScreen extends Responsive {
                     child: WidgetAnimator(
                       atRestEffect: WidgetRestingEffects.size(
                           duration: const Duration(seconds: 3)),
-                      child: Image.asset(
-                          "assets/icons/languages/java_icon.png",
-                          height: 60,
-                          width: 60,
-                          color: grayColor(context)),
+                      child: Image.asset("assets/icons/languages/java_icon.png",
+                          height: 60, width: 60, color: grayColor(context)),
                     ),
                   ),
                   Expanded(
@@ -816,22 +951,16 @@ class WebHomeScreen extends Responsive {
                     child: WidgetAnimator(
                       atRestEffect: WidgetRestingEffects.size(
                           duration: const Duration(seconds: 3)),
-                      child: Image.asset(
-                          "assets/icons/languages/html_icon.png",
-                          height: 60,
-                          width: 60,
-                          color: grayColor(context)),
+                      child: Image.asset("assets/icons/languages/html_icon.png",
+                          height: 60, width: 60, color: grayColor(context)),
                     ),
                   ),
                   Expanded(
                     child: WidgetAnimator(
                       atRestEffect: WidgetRestingEffects.size(
                           duration: const Duration(seconds: 3)),
-                      child: Image.asset(
-                          "assets/icons/languages/css_icon.png",
-                          height: 60,
-                          width: 60,
-                          color: grayColor(context)),
+                      child: Image.asset("assets/icons/languages/css_icon.png",
+                          height: 60, width: 60, color: grayColor(context)),
                     ),
                   ),
                   Expanded(
@@ -860,11 +989,8 @@ class WebHomeScreen extends Responsive {
                     child: WidgetAnimator(
                       atRestEffect: WidgetRestingEffects.size(
                           duration: const Duration(seconds: 3)),
-                      child: Image.asset(
-                          "assets/icons/languages/php_icon.png",
-                          height: 60,
-                          width: 60,
-                          color: grayColor(context)),
+                      child: Image.asset("assets/icons/languages/php_icon.png",
+                          height: 60, width: 60, color: grayColor(context)),
                     ),
                   ),
                   Expanded(
@@ -893,216 +1019,286 @@ class WebHomeScreen extends Responsive {
               ),
             ),
 
-              /* ------------------------------------------ SPACER ------------------------------------------ */
-              const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
-
-              /* ------------------------------------------ FOOTER ------------------------------------------ */
-              Container(
-                width: getWidth(context),
-                color: darkLightColor(context),
-                padding: const EdgeInsets.symmetric(vertical : CustomSizes.SPACE_DEFAULT, horizontal : CustomSizes.SPACE_BETWEEN_SECTIONS ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Image.asset(
-                            isDark(context)
-                                ? "assets/logos/logo_dark.png"
-                                : "assets/logos/logo_light.png",
-                            height: 150,
-                            width: 350),
-                        const Spacer(),
-                        Row(
+            /* ------------------------------------------ FOOTER ------------------------------------------ */
+            Container(
+              width: getWidth(context),
+              color: CustomColors.BLACK,
+              padding: const EdgeInsets.symmetric(
+                  vertical: CustomSizes.SPACE_DEFAULT,
+                  horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Image.asset("assets/logos/logo_light.png",
+                          height: 150,
+                          width: 350),
+                      const Spacer(),
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: CustomColors.WHITE),
+                                borderRadius: BorderRadius.circular(
+                                    CustomSizes.SPACE_BETWEEN_SECTIONS)),
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(Iconsax.instagram,
+                                  color: CustomColors.WHITE),
+                            ),
+                          ),
+                          const SizedBox(
+                              width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: CustomColors.WHITE),
+                                borderRadius: BorderRadius.circular(
+                                    CustomSizes.SPACE_BETWEEN_SECTIONS)),
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(Icons.tiktok,
+                                  color: CustomColors.WHITE),
+                            ),
+                          ),
+                          const SizedBox(
+                              width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: CustomColors.WHITE),
+                                borderRadius: BorderRadius.circular(
+                                    CustomSizes.SPACE_BETWEEN_SECTIONS)),
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(Icons.facebook,
+                                  color: CustomColors.WHITE),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  const Divider(color: CustomColors.GREY_DARK),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: darkDarkLightLightColor(context)),
-                                  borderRadius: BorderRadius.circular(
-                                      CustomSizes.SPACE_BETWEEN_SECTIONS)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Icon(Iconsax.instagram,
-                                    color: darkDarkLightLightColor(context)),
-                              ),
-                            ),
+                            Text("Liens d’aide",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium
+                                    ?.copyWith(
+                                        color:
+                                            CustomColors.WHITE)),
                             const SizedBox(
-                                width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                            Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: darkDarkLightLightColor(context)),
-                                  borderRadius: BorderRadius.circular(
-                                      CustomSizes.SPACE_BETWEEN_SECTIONS)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Icon(Icons.tiktok,
-                                    color: darkDarkLightLightColor(context)),
-                              ),
-                            ),
-                            const SizedBox(
-                                width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                            Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: darkDarkLightLightColor(context)),
-                                  borderRadius: BorderRadius.circular(
-                                      CustomSizes.SPACE_BETWEEN_SECTIONS)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Icon(Icons.facebook,
-                                    color: darkDarkLightLightColor(context)),
-                              ),
-                            ),
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                            const CustomPackItemTile(
+                                title: "Principal",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Iconsax.arrow_right_41),
+                            const CustomPackItemTile(
+                                title: "Les Services",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Iconsax.arrow_right_41),
+                            const CustomPackItemTile(
+                                title: "À Propos De Nous",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Iconsax.arrow_right_41),
+                            const CustomPackItemTile(
+                                title: "Les projets",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Iconsax.arrow_right_41),
                           ],
-                        )
-                      ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("CONTACTEZ-NOUS",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium
+                                    ?.copyWith(
+                                        color:
+                                            CustomColors.WHITE)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                            const CustomPackItemTile(
+                                title: "Maroc : +212 624 778 355",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Iconsax.call_calling),
+                            const CustomPackItemTile(
+                                title: "France : +31 724 778 3655",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Iconsax.call_calling),
+                            const CustomPackItemTile(
+                                title: "Email : Contact@ezil.com",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Icons.alternate_email),
+                            const CustomPackItemTile(
+                                title:
+                                    "MAROC, AGADIR, 80000, HAY SALAM G10 N 384",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Iconsax.location),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("CONTACTEZ-NOUS",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium
+                                    ?.copyWith(
+                                        color:
+                                            CustomColors.WHITE)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                            const CustomPackItemTile(
+                                title: "Maroc : +212 624 778 355",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Iconsax.call_calling),
+                            const CustomPackItemTile(
+                                title: "France : +31 724 778 3655",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Iconsax.call_calling),
+                            const CustomPackItemTile(
+                                title: "Email : Contact@ezil.com",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Icons.alternate_email),
+                            const CustomPackItemTile(
+                                title:
+                                    "MAROC, AGADIR, 80000, HAY SALAM G10 N 384",
+                                colorTitle: CustomColors.WHITE,
+                                icon: Iconsax.location),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                  const Divider(color: CustomColors.GREY_DARK),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                  Text("EZIL AGENCY © 2024 – Tous droits réservés.",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge
+                          ?.copyWith(color: CustomColors.GREY_DARK))
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      /* ------------------------------------------ FLOATING ACTION BUTTON ------------------------------------------ */
+      floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            WidgetAnimator(
+              atRestEffect:
+                  WidgetRestingEffects.wave(curve: Curves.fastOutSlowIn),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      hoverColor: CustomColors.RED.withOpacity(0.4),
+                      onHover: controller.onUpdateHoverWhatsappIconState,
+                      borderRadius: BorderRadius.circular(
+                          CustomSizes.SPACE_BETWEEN_SECTIONS),
+                      child: Row(
+                        children: [
+                          Image.asset("assets/icons/gmail_icon.png",
+                              height: 54, width: 54),
+                          Obx(
+                            () => Text(
+                                controller.isHoveringWhatsappIcon.isTrue
+                                    ? "  Contact Us Now ..   "
+                                    : "",
+                                style: Theme.of(context).textTheme.titleMedium),
+                          ),
+                        ],
+                      ),
                     ),
-                    const Divider(color: CustomColors.GREY_DARK),
-                    const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Liens d’aide",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                          color: darkDarkLightLightColor(
-                                              context))),
-                              const SizedBox(
-                                  height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                              CustomPackItemTile(
-                                  title: "Principal",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Iconsax.arrow_right_41),
-                              CustomPackItemTile(
-                                  title: "Les Services",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Iconsax.arrow_right_41),
-                              CustomPackItemTile(
-                                  title: "À Propos De Nous",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Iconsax.arrow_right_41),
-                              CustomPackItemTile(
-                                  title: "Les projets",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Iconsax.arrow_right_41),
-                            ],
+                    const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                    InkWell(
+                      onTap: () {},
+                      hoverColor: CustomColors.BLUE.withOpacity(0.4),
+                      onHover: controller.onUpdateHoverWhatsappIconState,
+                      borderRadius: BorderRadius.circular(
+                          CustomSizes.SPACE_BETWEEN_SECTIONS),
+                      child: Row(
+                        children: [
+                          Image.asset("assets/icons/telephone_icon.png",
+                              height: 50, width: 50),
+                          Obx(
+                            () => Text(
+                                controller.isHoveringWhatsappIcon.isTrue
+                                    ? "  Contact Us Now ..   "
+                                    : "",
+                                style: Theme.of(context).textTheme.titleMedium),
                           ),
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("CONTACTEZ-NOUS",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                          color: darkDarkLightLightColor(
-                                              context))),
-                              const SizedBox(
-                                  height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                              CustomPackItemTile(
-                                  title: "Maroc : +212 624 778 355",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Iconsax.call_calling),
-                              CustomPackItemTile(
-                                  title: "France : +31 724 778 3655",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Iconsax.call_calling),
-                              CustomPackItemTile(
-                                  title: "Email : Contact@ezil.com",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Icons.alternate_email),
-                              CustomPackItemTile(
-                                  title:
-                                      "MAROC, AGADIR, 80000, HAY SALAM G10 N 384",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Iconsax.location),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("CONTACTEZ-NOUS",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                          color: darkDarkLightLightColor(
-                                              context))),
-                              const SizedBox(
-                                  height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                              CustomPackItemTile(
-                                  title: "Maroc : +212 624 778 355",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Iconsax.call_calling),
-                              CustomPackItemTile(
-                                  title: "France : +31 724 778 3655",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Iconsax.call_calling),
-                              CustomPackItemTile(
-                                  title: "Email : Contact@ezil.com",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Icons.alternate_email),
-                              CustomPackItemTile(
-                                  title:
-                                      "MAROC, AGADIR, 80000, HAY SALAM G10 N 384",
-                                  colorTitle: darkDarkLightLightColor(context),
-                                  icon: Iconsax.location),
-                            ],
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                    const Divider(color: CustomColors.GREY_DARK),
-                    const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                    Text("EZIL AGENCY © 2024 – Tous droits réservés.",
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge
-                            ?.copyWith(color: CustomColors.GREY_DARK))
+                    const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                    InkWell(
+                      onTap: () {},
+                      hoverColor: CustomColors.GREEN_LIGHT.withOpacity(0.4),
+                      onHover: controller.onUpdateHoverWhatsappIconState,
+                      borderRadius: BorderRadius.circular(
+                          CustomSizes.SPACE_BETWEEN_SECTIONS),
+                      child: Row(
+                        children: [
+                          Image.asset("assets/icons/whatsapp_icon.png",
+                              height: 50, width: 50),
+                          Obx(
+                            () => Text(
+                                controller.isHoveringWhatsappIcon.isTrue
+                                    ? "  Contact Us Now ..   "
+                                    : "",
+                                style: Theme.of(context).textTheme.titleMedium),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-        /* ------------------------------------------ FLOATING ACTION BUTTON ------------------------------------------ */
-        floatingActionButton:
-            Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          Obx(
-            () => AnimatedOpacity(
-              duration: const Duration(milliseconds: 500),
-              opacity: controller.showFloatingActionButton.value ? 1.0 : 0.0,
-              child: FloatingActionButton(
-                onPressed: () {
-                  controller.scrollController.animateTo(0,
-                      duration: const Duration(milliseconds: 800),
-                      curve: Curves.fastOutSlowIn);
-                },
-                elevation: 16.0,
-                backgroundColor: primaryColor(context),
-                child:
-                    const Icon(Iconsax.arrow_up_24, color: CustomColors.WHITE),
+            ),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+            Obx(
+              () => AnimatedOpacity(
+                duration: const Duration(milliseconds: 500),
+                opacity: controller.showFloatingActionButton.value ? 1.0 : 0.0,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    controller.scrollController.animateTo(0,
+                        duration: const Duration(milliseconds: 800),
+                        curve: Curves.fastOutSlowIn);
+                  },
+                  elevation: 16.0,
+                  backgroundColor: primaryColor(context),
+                  child: const Icon(Iconsax.arrow_up_24,
+                      color: CustomColors.WHITE),
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
-          WidgetAnimator(
-            atRestEffect: WidgetRestingEffects.wave(curve: Curves.fastOutSlowIn),
-            child: Image.asset("assets/icons/whatsapp_icon.png", height:50, width: 50),
-          ),
-        ]));
+          ]),
+    );
   }
 }

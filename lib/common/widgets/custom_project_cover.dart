@@ -20,12 +20,11 @@ class CustomProjectCover extends Responsive {
     return InkWell(
       onTap: () => onClick,
       onHover: (hover)=>onHover(hover, image),
-      borderRadius: BorderRadius.circular(CustomSizes.SPACE_DEFAULT),
+      borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_SECTIONS),
       child: Stack(fit: StackFit.expand, children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(CustomSizes.SPACE_DEFAULT),
-          child: Image.asset(image,
-              fit: BoxFit.fitHeight, height: 260, width: 260),
+          child: Image.asset(image, fit: BoxFit.cover),
         ),
         child
       ]),
