@@ -78,12 +78,9 @@ class WebHomeScreen extends Responsive {
                                     ? Icons.light_mode_outlined
                                     : Iconsax.moon,
                                 color: darkDarkLightLightColor(context))),
-                            inactiveTrackColor:
-                                darkDarkLightLightColor(context),
-                            onChanged: (value) {
-                              print(value);
-                              controller.onUpdateCurrentUpdateUi(value);
-                            }),
+                            inactiveTrackColor: darkDarkLightLightColor(context),
+                            onChanged: controller.onUpdateCurrentUpdateUi
+                            ),
                       ))
                 ],
               ),
@@ -453,103 +450,103 @@ class WebHomeScreen extends Responsive {
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
                            const CustomPackItemTile(
                             title: "Conception De site-web",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Conception D'application Web",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Professionnel Site-web",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Professionnel Application Web",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Nom De Domaine .MA .COM etc",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Hébergement Rapide SSD",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Site-web Sécurisé Via SSL",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Application Web Sécurisé Via SSL",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Site-web Responsive (Adaptable)",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Application Web Responsive (Adaptable)",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Mise à Jour",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Panneau D'administration",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Thème Clair + Sombre",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Commande Via WhatsApp",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "2 Langues",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Email Professionnel",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Instagram Professionnel",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Facebook Professionnel",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Publication Par Semaine",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Annonce Par Semaine",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Analyse D'annonce",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Livraison très rapide",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
-                          const CustomPackItemTile(
+                           const CustomPackItemTile(
                             title: "Assistance 24/7",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Logo Gratuit",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const CustomPackItemTile(
                             title: "Carte De Visite Gratuit",
-                            colorTitle: CustomColors.WHITE,
+                            colorTitle: CustomColors.WHITE,colorIcon: CustomColors.WHITE,
                           ),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
@@ -603,20 +600,20 @@ class WebHomeScreen extends Responsive {
                           Divider(color: grayColor(context)),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          const CustomPackItemTile(
-                              title: "Conception De site-web"),
-                          const CustomPackItemTile(
-                              title: "Conception D'application Web"),
-                          const CustomPackItemTile(
-                              title: "Conception D'application Mobile"),
-                          const CustomPackItemTile(
-                              title: "Professionnel Site-web"),
-                          const CustomPackItemTile(
-                              title: "Professionnel Application Web"),
-                          const CustomPackItemTile(
-                              title: "Professionnel Application Mobile"),
-                          const CustomPackItemTile(
-                              title: "Nom De Domaine .MA .COM etc"),
+                           CustomPackItemTile(
+                              title: "Conception De site-web", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Conception D'application Web", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Conception D'application Mobile", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Professionnel Site-web", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Professionnel Application Web", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Professionnel Application Mobile", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Nom De Domaine .MA .COM etc", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(
                               title: "Hébergement Rapide SSD"),
                           const CustomPackItemTile(
@@ -632,38 +629,38 @@ class WebHomeScreen extends Responsive {
                               title:
                                   "Application Mobile Responsive (Adaptable)"),
                           const CustomPackItemTile(title: "Mise à Jour"),
-                          const CustomPackItemTile(
-                              title: "Panneau D'administration"),
-                          const CustomPackItemTile(
-                              title: "Thème Clair + Sombre"),
-                          const CustomPackItemTile(
-                              title: "Commande Online"),
-                          const CustomPackItemTile(
-                              title: "Paiement Online"),
-                          const CustomPackItemTile(
-                              title: "Commande Via WhatsApp"),
-                          const CustomPackItemTile(title: "+3 Langues"),
-                          const CustomPackItemTile(
-                              title: "Email Professionnel"),
+                           CustomPackItemTile(
+                              title: "Panneau D'administration", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Thème Clair + Sombre", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Commande Online", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Paiement Online", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Commande Via WhatsApp", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(title: "+3 Langues" ,bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Email Professionnel", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(
                               title: "Instagram Professionnel"),
                           const CustomPackItemTile(
                               title: "Facebook Professionnel"),
-                          const CustomPackItemTile(
-                              title: "Publication Par Semaine"),
-                          const CustomPackItemTile(
-                              title: "Annonce Par Semaine"),
-                          const CustomPackItemTile(
-                              title: "Analyse D'annonce"),
+                           CustomPackItemTile(
+                              title: "Publication Par Semaine", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Annonce Par Semaine", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
+                           CustomPackItemTile(
+                              title: "Analyse D'annonce", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(
                               title: "Livraison très rapide"),
                           const CustomPackItemTile(
                               title: "Assistance 24/7"),
-                          const CustomPackItemTile(
-                              title: "Boutique Sur Google"),
+                           CustomPackItemTile(
+                              title: "Boutique Sur Google", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const CustomPackItemTile(title: "Logo Gratuit"),
-                          const CustomPackItemTile(
-                              title: "Carte De Visite Gratuit"),
+                           CustomPackItemTile(
+                              title: "Carte De Visite Gratuit", bgColor: primaryColor(context).withOpacity(isDark(context) ? 0.4 : 0.1)),
                           const SizedBox(
                               height: CustomSizes.SPACE_BETWEEN_ITEMS),
                           WidgetAnimator(
@@ -700,196 +697,200 @@ class WebHomeScreen extends Responsive {
             const SizedBox(height: CustomSizes.SPACE_DEFAULT),
 
              /* ------------------------------------------ PROGRAMMING LANGUAGES ------------------------------------------ */
-            Row(
-              children: [
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/flutter_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+            Container(
+              color: CustomColors.BLACK,
+              padding: const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_SECTIONS * 1.5),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/flutter_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/java_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/java_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/kotlin_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/kotlin_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/react_native_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/react_native_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/android_studio_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/android_studio_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/swift_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/swift_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/vs_code_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/vs_code_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/firebase_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/firebase_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/figma_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/figma_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/xcode_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/xcode_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/html_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/html_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/css_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/css_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/python_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/python_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/django_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/django_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/php_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/php_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/laravel_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/laravel_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: WidgetAnimator(
-                    atRestEffect: WidgetRestingEffects.size(
-                        duration: const Duration(seconds: 3)),
-                    child: Image.asset(
-                        "assets/icons/languages/database_icon.png",
-                        height: 60,
-                        width: 60,
-                        color: grayColor(context)),
+                  Expanded(
+                    child: WidgetAnimator(
+                      atRestEffect: WidgetRestingEffects.size(
+                          duration: const Duration(seconds: 3)),
+                      child: Image.asset(
+                          "assets/icons/languages/database_icon.png",
+                          height: 60,
+                          width: 60,
+                          color: grayColor(context)),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
 
               /* ------------------------------------------ SPACER ------------------------------------------ */
@@ -899,7 +900,7 @@ class WebHomeScreen extends Responsive {
               Container(
                 width: getWidth(context),
                 color: darkLightColor(context),
-                padding: const EdgeInsets.all(CustomSizes.SPACE_DEFAULT),
+                padding: const EdgeInsets.symmetric(vertical : CustomSizes.SPACE_DEFAULT, horizontal : CustomSizes.SPACE_BETWEEN_SECTIONS ),
                 child: Column(
                   children: [
                     Row(
@@ -958,7 +959,7 @@ class WebHomeScreen extends Responsive {
                       ],
                     ),
                     const Divider(color: CustomColors.GREY_DARK),
-                    const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+                    const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -1027,17 +1028,50 @@ class WebHomeScreen extends Responsive {
                             ],
                           ),
                         ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("CONTACTEZ-NOUS",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium
+                                      ?.copyWith(
+                                          color: darkDarkLightLightColor(
+                                              context))),
+                              const SizedBox(
+                                  height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                              CustomPackItemTile(
+                                  title: "Maroc : +212 624 778 355",
+                                  colorTitle: darkDarkLightLightColor(context),
+                                  icon: Iconsax.call_calling),
+                              CustomPackItemTile(
+                                  title: "France : +31 724 778 3655",
+                                  colorTitle: darkDarkLightLightColor(context),
+                                  icon: Iconsax.call_calling),
+                              CustomPackItemTile(
+                                  title: "Email : Contact@ezil.com",
+                                  colorTitle: darkDarkLightLightColor(context),
+                                  icon: Icons.alternate_email),
+                              CustomPackItemTile(
+                                  title:
+                                      "MAROC, AGADIR, 80000, HAY SALAM G10 N 384",
+                                  colorTitle: darkDarkLightLightColor(context),
+                                  icon: Iconsax.location),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
-                    const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+                    const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
                     const Divider(color: CustomColors.GREY_DARK),
-                    const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+                    const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
                     Text("EZIL AGENCY © 2024 – Tous droits réservés.",
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge
-                            ?.copyWith(color: darkDarkLightLightColor(context)))
+                            ?.copyWith(color: CustomColors.GREY_DARK))
                   ],
                 ),
               ),
@@ -1064,17 +1098,10 @@ class WebHomeScreen extends Responsive {
               ),
             ),
           ),
-          const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+          const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
           WidgetAnimator(
-            atRestEffect:
-                WidgetRestingEffects.wave(duration: const Duration(seconds: 3)),
-            child: FloatingActionButton(
-              onPressed: () {},
-              elevation: 16.0,
-              backgroundColor: CustomColors.GREY_DARK.withOpacity(0.4),
-              child: const Icon(Iconsax.call_calling,
-                  color: CustomColors.GREEN_LIGHT),
-            ),
+            atRestEffect: WidgetRestingEffects.wave(curve: Curves.fastOutSlowIn),
+            child: Image.asset("assets/icons/whatsapp_icon.png", height:50, width: 50),
           ),
         ]));
   }
