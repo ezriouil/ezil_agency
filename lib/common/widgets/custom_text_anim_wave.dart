@@ -15,7 +15,7 @@ class CustomTextAnimWave extends Responsive {
       children: [
         TextLiquidFill(
           text: title,
-          waveDuration: const Duration(seconds: 7),
+          loadDuration: const Duration(seconds: 10),
           waveColor: CustomColors.WHITE,
           textStyle: Theme.of(context)
               .textTheme

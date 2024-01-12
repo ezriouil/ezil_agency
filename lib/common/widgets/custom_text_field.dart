@@ -59,7 +59,7 @@ class CustomTextField extends Responsive {
                 prefixIcon: leadingIcon != null
                     ? Icon(
                         leadingIcon,
-                        color: grayColor(context),
+                        color: darkLightColor(context),
                       )
                     : null,
                 suffixIcon: trailingIcon,

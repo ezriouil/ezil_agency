@@ -1,6 +1,6 @@
-import 'package:ezil_agency/home/mobile_home_screen.dart';
-import 'package:ezil_agency/home/tablet_home_screen.dart';
-import 'package:ezil_agency/home/web_home_screen.dart';
+import 'package:ezil_agency/home/screens/mobile_home_screen.dart';
+import 'package:ezil_agency/home/screens/tablet_home_screen.dart';
+import 'package:ezil_agency/home/screens/web_home_screen.dart';
 import 'package:ezil_agency/utils/responsive/responsive_layout.dart';
 import 'package:ezil_agency/utils/theme/theme_app.dart';
 import 'package:flutter/material.dart';
@@ -17,3 +17,6 @@ void main() async {
           tablet: TabletHomeScreen(),
           web: WebHomeScreen())));
 }
+
+//flutter pub run flutter_native_splash:remove
+//flutter pub run flutter_native_splash:create --path=flutter_native_splash.yaml

@@ -1,8 +1,13 @@
+import 'package:ezil_agency/common/widgets/custom_elevated_button.dart';
+import 'package:ezil_agency/common/widgets/custom_text_field.dart';
 import 'package:ezil_agency/utils/constants/custom_colors.dart';
 import 'package:ezil_agency/utils/constants/custom_sizes.dart';
+import 'package:ezil_agency/utils/extensions/validator.dart';
 import 'package:ezil_agency/utils/theme/theme_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
@@ -12,7 +17,13 @@ class HomeController extends GetxController {
       isHoveringFirstPlan,
       isHoveringSecondPlan,
       isHoveringLastPlan,
-      isHoveringWhatsappIcon;
+      isHoveringContactIcons;
+
+  late final RxString selectedRadioButton;
+
+  late final TextEditingController fullNameController,
+      phoneController,
+      messageController;
 
   late final RxString currentHoverItem;
   late final ScrollController scrollController;
@@ -29,24 +40,27 @@ class HomeController extends GetxController {
     isHoveringFirstPlan = false.obs;
     isHoveringSecondPlan = false.obs;
     isHoveringLastPlan = false.obs;
-    isHoveringWhatsappIcon = false.obs;
+    isHoveringContactIcons = false.obs;
+    selectedRadioButton = "Business".obs;
+    fullNameController = TextEditingController();
+    phoneController = TextEditingController();
+    messageController = TextEditingController();
     manageScrollController();
-    init();
+    onUpdateCurrentUpdateUi(true);
   }
-
-  // - - - - - - - - - - - - - - - - - - INIT - - - - - - - - - - - - - - - - - -  //
-  init() async {}
 
   // - - - - - - - - - - - - - - - - - - UPDATE HOVER STATES - - - - - - - - - - - - - - - - - -  //
   onUpdateHoverState(bool hover) => isHovering.value = hover;
 
   onUpdateHoverFirstPlanState(bool hover) => isHoveringFirstPlan.value = hover;
 
-  onUpdateHoverSecondPlanState(bool hover) => isHoveringSecondPlan.value = hover;
+  onUpdateHoverSecondPlanState(bool hover) =>
+      isHoveringSecondPlan.value = hover;
 
   onUpdateHoverLastPlanState(bool hover) => isHoveringLastPlan.value = hover;
 
-  onUpdateHoverWhatsappIconState(bool hover) => isHoveringWhatsappIcon.value = hover;
+  onUpdateHoverContactIconsState(bool hover) =>
+      isHoveringContactIcons.value = hover;
 
   // - - - - - - - - - - - - - - - - - - UPDATE UPGRADE UI SWITCH BUTTON - - - - - - - - - - - - - - - - - -  //
   onUpdateCurrentUpdateUi(bool switched) async {
@@ -67,6 +81,134 @@ class HomeController extends GetxController {
     themeSwitcher.isTrue
         ? Get.changeTheme(ThemeApp.darkTheme)
         : Get.changeTheme(ThemeApp.lightTheme);
+  }
+
+  // - - - - - - - - - - - - - - - - - - BUTTONS - - - - - - - - - - - - - - - - - -  //
+  onNavigateToServiceScreen() {
+    scrollController.animateTo(scrollController.position.maxScrollExtent - 1500,
+        duration: const Duration(seconds: 1), curve: Curves.linear);
+  }
+
+  onNavigateToContactUsScreen(BuildContext context) {
+    Get.defaultDialog(
+        title: "",
+        middleText: "",
+        content: Column(
+          children: [
+            Text("Get in touch",
+                style: Theme.of(context).textTheme.headlineMedium),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+            Text("Let's talk about your project",
+                style: Theme.of(context).textTheme.titleMedium),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+            CustomTextField(
+                hint: "Full Name",
+                leadingIcon: Iconsax.user,
+                autoFocus: true,
+                validator: (value) =>
+                    Validator.validateEmptyField("Full Name", value),
+                controller: fullNameController,
+                width: context.width / 3),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+            CustomTextField(
+                hint: "Phone",
+                leadingIcon: Iconsax.call,
+                textInputType: TextInputType.number,
+                validator: (value) => Validator.validatePasswordField(value),
+                controller: fullNameController,
+                width: context.width / 3),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+            CustomTextField(
+                hint: "Message",
+                leadingIcon: Iconsax.message,
+                textInputType: TextInputType.emailAddress,
+                validator: (value) =>
+                    Validator.validateEmptyField("Message", value),
+                controller: fullNameController,
+                width: context.width / 3),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+            Text("Choise Votre Plan",
+                style: Theme.of(context).textTheme.titleMedium),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+            Obx(
+              () => Row(
+                children: [
+                  Expanded(
+                    child: ListTile(
+                        title: Text("Prime",
+                            style: Theme.of(context).textTheme.titleLarge),
+                        leading: Radio(
+                            value: "Prime",
+                            groupValue: selectedRadioButton.value,
+                            onChanged: (String? value) {
+                              selectedRadioButton.value = value ?? "Prime";
+                            })),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                        title: Text("Business",
+                            style: Theme.of(context).textTheme.titleLarge),
+                        leading: Radio(
+                            autofocus: true,
+                            value: "Business",
+                            groupValue: selectedRadioButton.value,
+                            onChanged: (String? value) {
+                              selectedRadioButton.value = value ?? "Business";
+                            })),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                        title: Text("Start-up",
+                            style: Theme.of(context).textTheme.titleLarge),
+                        leading: Radio(
+                            value: "Start-up",
+                            groupValue: selectedRadioButton.value,
+                            onChanged: (String? value) {
+                              selectedRadioButton.value = value ?? "Start-up";
+                            })),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+            CustomElevatedButton(
+                text: "Validate",
+                onClick: () {
+                  Get.back();
+                },
+                width: context.width / 7),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+          ],
+        ));
+  }
+
+  onNavigateToAboutUsScreen() {
+    scrollController.animateTo(scrollController.position.maxScrollExtent,
+        duration: const Duration(seconds: 1), curve: Curves.linear);
+  }
+
+  onNavigateToProjectsScreen() {
+    scrollController.animateTo(scrollController.position.maxScrollExtent - 2500,
+        duration: const Duration(seconds: 1), curve: Curves.linear);
+  }
+
+  onNavigateToGmail() {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: "prizidatv@gmail.com",
+      queryParameters: {'subject': "", 'body': ""},
+    );
+
+// To launch the link
+    launchUrl(emailLaunchUri);
+  }
+
+  onNavigateToPhoneCall() {
+    launchUrl(Uri.parse("tel://212624778355"));
+  }
+
+  onNavigateToWhatsapp({String phone = "624778355", String message = ""}) {
+    launchUrl(Uri.parse("https://wa.me/$phone?text=$message"));
   }
 
   // - - - - - - - - - - - - - - - - - - SCROLL CONTROLLER - - - - - - - - - - - - - - - - - -  //

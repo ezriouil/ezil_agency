@@ -11,6 +11,7 @@ import 'package:ezil_agency/utils/constants/custom_animations_strings.dart';
 import 'package:ezil_agency/utils/constants/custom_colors.dart';
 import 'package:ezil_agency/utils/constants/custom_icon_strings.dart';
 import 'package:ezil_agency/utils/constants/custom_sizes.dart';
+import 'package:ezil_agency/utils/constants/custom_txt_strings.dart';
 import 'package:ezil_agency/utils/responsive/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,23 +44,33 @@ class WebHomeScreen extends Responsive {
                 const Spacer(),
                 Row(
                   children: [
-                    Text("Home", style: Theme.of(context).textTheme.titleLarge),
-                    const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                    Text("Services",
+                    Text(CustomTextStrings.HOME,
                         style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                    Text("About us",
-                        style: Theme.of(context).textTheme.titleLarge),
+                    InkWell(
+                      onTap: controller.onNavigateToServiceScreen,
+                      child: Text(CustomTextStrings.SERVICES,
+                          style: Theme.of(context).textTheme.titleLarge),
+                    ),
                     const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                    Text("Projects",
-                        style: Theme.of(context).textTheme.titleLarge),
+                    InkWell(
+                      onTap: controller.onNavigateToAboutUsScreen,
+                      child: Text(CustomTextStrings.ABOUT_US,
+                          style: Theme.of(context).textTheme.titleLarge),
+                    ),
+                    const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                    InkWell(
+                      onTap: controller.onNavigateToProjectsScreen,
+                      child: Text(CustomTextStrings.PROJECTS,
+                          style: Theme.of(context).textTheme.titleLarge),
+                    ),
                   ],
                 ),
                 const Spacer(),
                 CustomElevatedButton(
-                  text: "Contactez-nous",
-                  onClick: () {},
-                  width: 150,
+                  text: CustomTextStrings.CONTACT_US,
+                  onClick: ()=>controller.onNavigateToContactUsScreen(context),
+                  width: 120,
                   withDefaultPadding: false,
                 ),
                 const SizedBox(width: CustomSizes.SPACE_DEFAULT),
@@ -86,10 +97,10 @@ class WebHomeScreen extends Responsive {
 
             /* ------------------------------------------ PADDING ------------------------------------------ */
             Padding(
-              padding: const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_SECTIONS *2),
+              padding:
+                  const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
               child: Column(
                 children: [
-                  
                   /* ------------------------------------------ TITLE + ANIMATION ------------------------------------------ */
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,15 +109,14 @@ class WebHomeScreen extends Responsive {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Développer Vos Ventes Facilement',
+                            Text(CustomTextStrings.TITLE,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineMedium!
                                     .copyWith(fontSize: 60)),
                             const SizedBox(
                                 height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                            Text(
-                                "Notre objectif est de conquérir nos clients, de les fidéliser et d'en faire des ambassadeurs.",
+                            Text(CustomTextStrings.SUB_TITLE,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleMedium!
@@ -117,8 +127,8 @@ class WebHomeScreen extends Responsive {
                                 atRestEffect: WidgetRestingEffects.size(
                                     duration: const Duration(seconds: 3)),
                                 child: CustomElevatedButton(
-                                  text: "Notre Services",
-                                  onClick: () {},
+                                  text: CustomTextStrings.OUR_SERVICRS,
+                                  onClick:controller.onNavigateToServiceScreen,
                                   width: 150,
                                   withDefaultPadding: false,
                                 )),
@@ -140,7 +150,7 @@ class WebHomeScreen extends Responsive {
 
                   /* ------------------------------------------ OUR SERVICES ------------------------------------------ */
                   const SizedBox(height: CustomSizes.SPACE_DEFAULT),
-                  Text("Our services",
+                  Text(CustomTextStrings.OUR_SERVICRS,
                       style: Theme.of(context)
                           .textTheme
                           .headlineMedium
@@ -148,7 +158,7 @@ class WebHomeScreen extends Responsive {
 
                   /* ------------------------------------------ SPACER ------------------------------------------ */
                   const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                  Text("Transformative Digital offerings",
+                  Text(CustomTextStrings.OUR_SERVICRS_SUB,
                       style: Theme.of(context)
                           .textTheme
                           .headlineLarge
@@ -164,30 +174,30 @@ class WebHomeScreen extends Responsive {
                       Expanded(
                           child: CustomServiceTile(
                               image: "assets/icons/app_dev.png",
-                              title: "MOBILE APP",
+                              title: CustomTextStrings.DIGITAL_OFFERS_TITLE1,
                               description:
-                                  "Fueling innovation in the palm of your hand, we are your mobile app experts. From concept to deployment, our agency specializes in crafting sleek and user-friendly mobile applications. Elevate your brand's mobile experience with us.")),
+                                  CustomTextStrings.DIGITAL_OFFERS_DESC1)),
                       SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
                       Expanded(
                           child: CustomServiceTile(
                               image: "assets/icons/web_site_dev.png",
-                              title: "WEB SITE",
+                              title: CustomTextStrings.DIGITAL_OFFERS_TITLE2,
                               description:
-                                  "Transform your vision into a compelling online presence with our web design agency. We specialize in creating stunning, user-friendly websites that captivate and engage. Elevate your brand online with our expert team.")),
+                                  CustomTextStrings.DIGITAL_OFFERS_DESC2)),
                       SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
                       Expanded(
                           child: CustomServiceTile(
                               image: "assets/icons/web_app_dev.png",
-                              title: "APPLICATION WEB",
+                              title: CustomTextStrings.DIGITAL_OFFERS_TITLE3,
                               description:
-                                  "Empower your business with our bespoke web apps. We specialize in crafting seamless and user-friendly web apps, innovative solutions for a dynamic online presence. Elevate your digital strategy with our agency.")),
+                                  CustomTextStrings.DIGITAL_OFFERS_DESC3)),
                       SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
                       Expanded(
                           child: CustomServiceTile(
                               image: "assets/icons/advertising_dev.png",
-                              title: "MARKETING DIGITAL",
+                              title: CustomTextStrings.DIGITAL_OFFERS_TITLE4,
                               description:
-                                  "Amplify your brand's reach with our advertising expertise. As a dynamic agency, we specialize in crafting impactful campaigns that resonate across diverse platforms. Elevate your brand visibility and engagement")),
+                                  CustomTextStrings.DIGITAL_OFFERS_DESC4)),
                     ],
                   ),
                 ],
@@ -292,6 +302,9 @@ class WebHomeScreen extends Responsive {
               ),
             ),
 
+            /* ------------------------------------------ SPACER ------------------------------------------ */
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+
             /* ------------------------------------------ GRID VIEW TITLE ------------------------------------------ */
             Text("Notre Projects Digital",
                 style: Theme.of(context)
@@ -307,20 +320,23 @@ class WebHomeScreen extends Responsive {
                 "Notre équipe vous accompagne et assure un suivi client de qualité.",
                 style: Theme.of(context).textTheme.titleMedium),
 
+            /* ------------------------------------------ SPACER ------------------------------------------ */
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+
+
             /* ------------------------------------------ GRID VIEW ------------------------------------------ */
             Padding(
               padding: const EdgeInsets.symmetric(
-                  horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS * 3,
-                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
+                  horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS * 3),
               child: CustomGridView(
                   itemsInRow: 4,
                   spaceBetweenRows: CustomSizes.SPACE_BETWEEN_ITEMS,
-                  spaceBetweenColumns: CustomSizes.SPACE_BETWEEN_SECTIONS * 2,
-                  itemsHeight: 230,
+                  spaceBetweenColumns: CustomSizes.SPACE_BETWEEN_SECTIONS,
+                  itemsHeight: getWidth(context)*0.15,
                   count: controller.projectsBackground.length,
                   itemBuilder: (BuildContext context, int index) => Obx(
                         () => CustomProjectCover(
-                            onClick: () {},
+                            onClick:controller.onNavigateToServiceScreen,
                             onHover: (hover, img) {
                               controller.onUpdateHoverState(hover);
                               controller.currentHoverItem.value = img;
@@ -333,7 +349,7 @@ class WebHomeScreen extends Responsive {
                                         color:
                                             grayColor(context).withOpacity(0.3),
                                         borderRadius: BorderRadius.circular(
-                                            CustomSizes.SPACE_DEFAULT)),
+                                            CustomSizes.SPACE_BETWEEN_ITEMS)),
                                     child: Center(
                                         child: TextAnimator("See more ...",
                                             atRestEffect:
@@ -350,440 +366,451 @@ class WebHomeScreen extends Responsive {
                                   )),
                       )),
             ),
-            Text("Price Plan",
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge
-                    ?.copyWith(color: primaryColor(context))),
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
-            Text("Creative Solutions, Transparent Pricing",
-                style: Theme.of(context).textTheme.headlineLarge),
+
+
 
             /* ------------------------------------------ PACKAGES ------------------------------------------ */
             Padding(
               padding: const EdgeInsets.symmetric(
-                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS,
+                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS*3,
                   horizontal: CustomSizes.SPACE_DEFAULT),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Column(
                 children: [
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: CustomSizes.SPACE_BETWEEN_ITEMS,
-                          vertical: CustomSizes.SPACE_DEFAULT),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: darkLightColor(context)),
-                          borderRadius:
-                              BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
-                      child: Column(
-                        children: [
-                          Text("Prime",
-                              style:
-                                  Theme.of(context).textTheme.headlineMedium),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                          Text(
-                              "Tout ce dont vous avez besoin pour créer votre site Web",
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyMedium),
-                          const SizedBox(height: CustomSizes.SPACE_DEFAULT),
-                          Text("499 Dh / mois",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineLarge
-                                  ?.copyWith(fontSize: 40)),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          Divider(color: grayColor(context)),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          CustomPackItemTile(
-                              title: "Conception De site-web",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
-                              title: "Professionnel Site-web",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
-                              title: "Nom De Domaine .MA .COM etc",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          const CustomPackItemTile(
-                              title: "Hébergement Rapide SSD"),
-                          const CustomPackItemTile(
-                              title: "Site-web sécurisé via SSL"),
-                          const CustomPackItemTile(
-                              title: "Site-web Responsive (Adaptable)"),
-                          CustomPackItemTile(
-                              title: "Professionnel Email",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
-                              title: "Thème Clair + Sombre",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          const CustomPackItemTile(title: "1 Langue"),
-                          const CustomPackItemTile(
-                              title: "Instagram Professionnel"),
-                          const CustomPackItemTile(
-                              title: "Facebook Professionnel"),
-                          CustomPackItemTile(
-                              title: "Publication Par Semaine",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          const CustomPackItemTile(
-                              title: "Livraison très rapide"),
-                          const CustomPackItemTile(title: "Assistance 24/7"),
-                          const CustomPackItemTile(title: "Logo Gratuit"),
-                          CustomPackItemTile(
-                              title: "Carte De Visite Gratuit",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          WidgetAnimator(
-                              atRestEffect: WidgetRestingEffects.wave(),
-                              child: CustomOutlinedButton(
-                                  text: "SELECT PLAN",
-                                  onClick: () {},
-                                  width: 200,
-                                  withDefaultPadding: false))
-                        ],
+                  Text("Price Plan",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge
+                          ?.copyWith(color: primaryColor(context))),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                  Text("Creative Solutions, Transparent Pricing",
+                      style: Theme.of(context).textTheme.headlineLarge),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                  Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: CustomSizes.SPACE_BETWEEN_ITEMS,
+                            vertical: CustomSizes.SPACE_DEFAULT),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: darkLightColor(context)),
+                            borderRadius:
+                                BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
+                        child: Column(
+                          children: [
+                            Text("Prime",
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                            Text(
+                                "Tout ce dont vous avez besoin pour créer votre site Web",
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+                            Text("499 Dh / mois",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineLarge
+                                    ?.copyWith(fontSize: 40)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                            Divider(color: grayColor(context)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                            CustomPackItemTile(
+                                title: "Conception De site-web",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Professionnel Site-web",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Nom De Domaine .MA .COM etc",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            const CustomPackItemTile(
+                                title: "Hébergement Rapide SSD"),
+                            const CustomPackItemTile(
+                                title: "Site-web sécurisé via SSL"),
+                            const CustomPackItemTile(
+                                title: "Site-web Responsive (Adaptable)"),
+                            CustomPackItemTile(
+                                title: "Professionnel Email",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Thème Clair + Sombre",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            const CustomPackItemTile(title: "1 Langue"),
+                            const CustomPackItemTile(
+                                title: "Instagram Professionnel"),
+                            const CustomPackItemTile(
+                                title: "Facebook Professionnel"),
+                            CustomPackItemTile(
+                                title: "Publication Par Semaine",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            const CustomPackItemTile(
+                                title: "Livraison très rapide"),
+                            const CustomPackItemTile(title: "Assistance 24/7"),
+                            const CustomPackItemTile(title: "Logo Gratuit"),
+                            CustomPackItemTile(
+                                title: "Carte De Visite Gratuit",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                            WidgetAnimator(
+                                atRestEffect: WidgetRestingEffects.wave(),
+                                child: CustomOutlinedButton(
+                                    text: "SELECT PLAN",
+                                    onClick:
+                                        ()=>controller.onNavigateToContactUsScreen(context),
+                                    width: 200,
+                                    withDefaultPadding: false))
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: CustomSizes.SPACE_BETWEEN_ITEMS,
-                          vertical: CustomSizes.SPACE_DEFAULT),
-                      decoration: BoxDecoration(
-                          color: primaryColor(context),
-                          border: Border.all(color: primaryColor(context)),
-                          borderRadius:
-                              BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
-                      child: Column(
-                        children: [
-                          Text("Business",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineMedium
-                                  ?.copyWith(color: CustomColors.WHITE)),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                          Text(
-                              "Passez au niveau supérieur avec plus de puissance et des fonctionnalités améliorées",
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(color: CustomColors.WHITE)),
-                          const SizedBox(height: CustomSizes.SPACE_DEFAULT),
-                          Text("999 Dh / mois",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineLarge
-                                  ?.copyWith(
-                                      fontSize: 40, color: CustomColors.WHITE)),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          Divider(color: CustomColors.WHITE.withOpacity(0.5)),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          const CustomPackItemTile(
-                            title: "Conception De site-web",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Conception D'application Web",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Professionnel Site-web",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Professionnel Application Web",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Nom De Domaine .MA .COM etc",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Hébergement Rapide SSD",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Site-web Sécurisé Via SSL",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Application Web Sécurisé Via SSL",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Site-web Responsive (Adaptable)",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Application Web Responsive (Adaptable)",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Mise à Jour",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Panneau D'administration",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Thème Clair + Sombre",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Commande Via WhatsApp",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "2 Langues",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Email Professionnel",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Instagram Professionnel",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Facebook Professionnel",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Publication Par Semaine",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Annonce Par Semaine",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Analyse D'annonce",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Livraison très rapide",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Assistance 24/7",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Logo Gratuit",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const CustomPackItemTile(
-                            title: "Carte De Visite Gratuit",
-                            colorTitle: CustomColors.WHITE,
-                            colorIcon: CustomColors.WHITE,
-                          ),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          WidgetAnimator(
-                              atRestEffect: WidgetRestingEffects.bounce(),
-                              child: CustomElevatedButton(
-                                  text: "SELECT PLAN",
-                                  onClick: () {},
-                                  width: 200,
-                                  style: ElevatedButton.styleFrom(
-                                      elevation: 0,
-                                      backgroundColor: CustomColors.WHITE,
-                                      foregroundColor: primaryColor(context))))
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: CustomSizes.SPACE_BETWEEN_ITEMS,
-                          vertical: CustomSizes.SPACE_DEFAULT),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: darkLightColor(context)),
-                          borderRadius:
-                              BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
-                      child: Column(
-                        children: [
-                          Text("Start-up",
-                              style:
-                                  Theme.of(context).textTheme.headlineMedium),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                          Text(
-                              "Bénéficiez de performances optimisées et de ressources dédiées",
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyMedium),
-                          const SizedBox(height: CustomSizes.SPACE_DEFAULT),
-                          Text("1499 Dh / mois",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineLarge
-                                  ?.copyWith(fontSize: 40)),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          Divider(color: grayColor(context)),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          CustomPackItemTile(
+                    const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: CustomSizes.SPACE_BETWEEN_ITEMS,
+                            vertical: CustomSizes.SPACE_DEFAULT),
+                        decoration: BoxDecoration(
+                            color: primaryColor(context),
+                            border: Border.all(color: primaryColor(context)),
+                            borderRadius:
+                                BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
+                        child: Column(
+                          children: [
+                            Text("Business",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium
+                                    ?.copyWith(color: CustomColors.WHITE)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                            Text(
+                                "Passez au niveau supérieur avec plus de puissance et des fonctionnalités améliorées",
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(color: CustomColors.WHITE)),
+                            const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+                            Text("999 Dh / mois",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineLarge
+                                    ?.copyWith(
+                                        fontSize: 40, color: CustomColors.WHITE)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                            Divider(color: CustomColors.WHITE.withOpacity(0.5)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                            const CustomPackItemTile(
                               title: "Conception De site-web",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Conception D'application Web",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
-                              title: "Conception D'application Mobile",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Professionnel Site-web",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Professionnel Application Web",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
-                              title: "Professionnel Application Mobile",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Nom De Domaine .MA .COM etc",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          const CustomPackItemTile(
-                              title: "Hébergement Rapide SSD"),
-                          const CustomPackItemTile(
-                              title: "Site-web Sécurisé Via SSL"),
-                          const CustomPackItemTile(
-                              title: "Application Web Sécurisé Via SSL"),
-                          const CustomPackItemTile(
-                              title: "Site-web Responsive (Adaptable)"),
-                          const CustomPackItemTile(
-                              title: "Application Web Responsive (Adaptable)"),
-                          const CustomPackItemTile(
-                              title:
-                                  "Application Mobile Responsive (Adaptable)"),
-                          const CustomPackItemTile(title: "Mise à Jour"),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Hébergement Rapide SSD",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Site-web Sécurisé Via SSL",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Application Web Sécurisé Via SSL",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Site-web Responsive (Adaptable)",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Application Web Responsive (Adaptable)",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Mise à Jour",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Panneau D'administration",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Thème Clair + Sombre",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
-                              title: "Commande Online",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
-                              title: "Paiement Online",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Commande Via WhatsApp",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
-                              title: "+3 Langues",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "2 Langues",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Email Professionnel",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          const CustomPackItemTile(
-                              title: "Instagram Professionnel"),
-                          const CustomPackItemTile(
-                              title: "Facebook Professionnel"),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Instagram Professionnel",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Facebook Professionnel",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Publication Par Semaine",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Annonce Par Semaine",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Analyse D'annonce",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          const CustomPackItemTile(
-                              title: "Livraison très rapide"),
-                          const CustomPackItemTile(title: "Assistance 24/7"),
-                          CustomPackItemTile(
-                              title: "Boutique Sur Google",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          const CustomPackItemTile(title: "Logo Gratuit"),
-                          CustomPackItemTile(
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Livraison très rapide",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Assistance 24/7",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
+                              title: "Logo Gratuit",
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const CustomPackItemTile(
                               title: "Carte De Visite Gratuit",
-                              bgColor: primaryColor(context)
-                                  .withOpacity(isDark(context) ? 0.4 : 0.1)),
-                          const SizedBox(
-                              height: CustomSizes.SPACE_BETWEEN_ITEMS),
-                          WidgetAnimator(
-                              atRestEffect: WidgetRestingEffects.wave(),
-                              child: CustomOutlinedButton(
-                                  text: "SELECT PLAN",
-                                  onClick: () {},
-                                  width: 200,
-                                  withDefaultPadding: false))
-                        ],
+                              colorTitle: CustomColors.WHITE,
+                              colorIcon: CustomColors.WHITE,
+                            ),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                            WidgetAnimator(
+                                atRestEffect: WidgetRestingEffects.bounce(),
+                                child: CustomElevatedButton(
+                                    text: "SELECT PLAN",
+                                    onClick:
+                                        ()=>controller.onNavigateToContactUsScreen(context),
+                                    width: 200,
+                                    style: ElevatedButton.styleFrom(
+                                        elevation: 0,
+                                        backgroundColor: CustomColors.WHITE,
+                                        foregroundColor: primaryColor(context))))
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(width: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: CustomSizes.SPACE_BETWEEN_ITEMS,
+                            vertical: CustomSizes.SPACE_DEFAULT),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: darkLightColor(context)),
+                            borderRadius:
+                                BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
+                        child: Column(
+                          children: [
+                            Text("Start-up",
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                            Text(
+                                "Bénéficiez de performances optimisées et de ressources dédiées",
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+                            Text("1499 Dh / mois",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineLarge
+                                    ?.copyWith(fontSize: 40)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                            Divider(color: grayColor(context)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                            CustomPackItemTile(
+                                title: "Conception De site-web",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Conception D'application Web",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Conception D'application Mobile",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Professionnel Site-web",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Professionnel Application Web",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Professionnel Application Mobile",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Nom De Domaine .MA .COM etc",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            const CustomPackItemTile(
+                                title: "Hébergement Rapide SSD"),
+                            const CustomPackItemTile(
+                                title: "Site-web Sécurisé Via SSL"),
+                            const CustomPackItemTile(
+                                title: "Application Web Sécurisé Via SSL"),
+                            const CustomPackItemTile(
+                                title: "Site-web Responsive (Adaptable)"),
+                            const CustomPackItemTile(
+                                title: "Application Web Responsive (Adaptable)"),
+                            const CustomPackItemTile(
+                                title:
+                                    "Application Mobile Responsive (Adaptable)"),
+                            const CustomPackItemTile(title: "Mise à Jour"),
+                            CustomPackItemTile(
+                                title: "Panneau D'administration",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Thème Clair + Sombre",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Commande Online",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Paiement Online",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Commande Via WhatsApp",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "+3 Langues",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Email Professionnel",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            const CustomPackItemTile(
+                                title: "Instagram Professionnel"),
+                            const CustomPackItemTile(
+                                title: "Facebook Professionnel"),
+                            CustomPackItemTile(
+                                title: "Publication Par Semaine",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Annonce Par Semaine",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            CustomPackItemTile(
+                                title: "Analyse D'annonce",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            const CustomPackItemTile(
+                                title: "Livraison très rapide"),
+                            const CustomPackItemTile(title: "Assistance 24/7"),
+                            CustomPackItemTile(
+                                title: "Boutique Sur Google",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            const CustomPackItemTile(title: "Logo Gratuit"),
+                            CustomPackItemTile(
+                                title: "Carte De Visite Gratuit",
+                                bgColor: primaryColor(context)
+                                    .withOpacity(isDark(context) ? 0.4 : 0.1)),
+                            const SizedBox(
+                                height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                            WidgetAnimator(
+                                atRestEffect: WidgetRestingEffects.wave(),
+                                child: CustomOutlinedButton(
+                                    text: "SELECT PLAN",
+                                    onClick:
+                                        ()=>controller.onNavigateToContactUsScreen(context),
+                                    width: 200,
+                                    withDefaultPadding: false))
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )],
               ),
             ),
 
-            /* ------------------------------------------ PACKAGES ------------------------------------------ */
+            /* ------------------------------------------ OUR VALUES ------------------------------------------ */
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: CustomSizes.SPACE_BETWEEN_SECTIONS, horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS*4),
+              padding: const EdgeInsets.symmetric(
+                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS,
+                  horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS * 4),
               child: Row(
                 children: [
                   Expanded(
@@ -1031,15 +1058,13 @@ class WebHomeScreen extends Responsive {
                   Row(
                     children: [
                       Image.asset("assets/logos/logo_light.png",
-                          height: 150,
-                          width: 350),
+                          height: 150, width: 350),
                       const Spacer(),
                       Row(
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: CustomColors.WHITE),
+                                border: Border.all(color: CustomColors.WHITE),
                                 borderRadius: BorderRadius.circular(
                                     CustomSizes.SPACE_BETWEEN_SECTIONS)),
                             child: const Padding(
@@ -1052,22 +1077,20 @@ class WebHomeScreen extends Responsive {
                               width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                           Container(
                             decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: CustomColors.WHITE),
+                                border: Border.all(color: CustomColors.WHITE),
                                 borderRadius: BorderRadius.circular(
                                     CustomSizes.SPACE_BETWEEN_SECTIONS)),
                             child: const Padding(
                               padding: EdgeInsets.all(8.0),
-                              child: Icon(Icons.tiktok,
-                                  color: CustomColors.WHITE),
+                              child:
+                                  Icon(Icons.tiktok, color: CustomColors.WHITE),
                             ),
                           ),
                           const SizedBox(
                               width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                           Container(
                             decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: CustomColors.WHITE),
+                                border: Border.all(color: CustomColors.WHITE),
                                 borderRadius: BorderRadius.circular(
                                     CustomSizes.SPACE_BETWEEN_SECTIONS)),
                             child: const Padding(
@@ -1093,9 +1116,7 @@ class WebHomeScreen extends Responsive {
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineMedium
-                                    ?.copyWith(
-                                        color:
-                                            CustomColors.WHITE)),
+                                    ?.copyWith(color: CustomColors.WHITE)),
                             const SizedBox(
                                 height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                             const CustomPackItemTile(
@@ -1125,9 +1146,7 @@ class WebHomeScreen extends Responsive {
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineMedium
-                                    ?.copyWith(
-                                        color:
-                                            CustomColors.WHITE)),
+                                    ?.copyWith(color: CustomColors.WHITE)),
                             const SizedBox(
                                 height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                             const CustomPackItemTile(
@@ -1158,9 +1177,7 @@ class WebHomeScreen extends Responsive {
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineMedium
-                                    ?.copyWith(
-                                        color:
-                                            CustomColors.WHITE)),
+                                    ?.copyWith(color: CustomColors.WHITE)),
                             const SizedBox(
                                 height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                             const CustomPackItemTile(
@@ -1204,7 +1221,9 @@ class WebHomeScreen extends Responsive {
       floatingActionButton: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
+
           children: [
+            /* ------------------------------------------ FLOATING ACTION BUTTON 1 ------------------------------------------ */
             WidgetAnimator(
               atRestEffect:
                   WidgetRestingEffects.wave(curve: Curves.fastOutSlowIn),
@@ -1213,11 +1232,12 @@ class WebHomeScreen extends Responsive {
                     left: CustomSizes.SPACE_BETWEEN_SECTIONS),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: controller.onNavigateToGmail,
                       hoverColor: CustomColors.RED.withOpacity(0.4),
-                      onHover: controller.onUpdateHoverWhatsappIconState,
+                      onHover: controller.onUpdateHoverContactIconsState,
                       borderRadius: BorderRadius.circular(
                           CustomSizes.SPACE_BETWEEN_SECTIONS),
                       child: Row(
@@ -1226,19 +1246,23 @@ class WebHomeScreen extends Responsive {
                               height: 54, width: 54),
                           Obx(
                             () => Text(
-                                controller.isHoveringWhatsappIcon.isTrue
-                                    ? "  Contact Us Now ..   "
+                                controller.isHoveringContactIcons.isTrue
+                                    ? "  EMAIL   "
                                     : "",
-                                style: Theme.of(context).textTheme.titleMedium),
+                                style: Theme.of(context).textTheme.bodyLarge),
                           ),
                         ],
                       ),
                     ),
+
+                    /* ------------------------------------------ SPACER ------------------------------------------ */
                     const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+
+                    /* ------------------------------------------ FLOATING ACTION BUTTON 2 ------------------------------------------ */
                     InkWell(
-                      onTap: () {},
+                      onTap: controller.onNavigateToPhoneCall,
                       hoverColor: CustomColors.BLUE.withOpacity(0.4),
-                      onHover: controller.onUpdateHoverWhatsappIconState,
+                      onHover: controller.onUpdateHoverContactIconsState,
                       borderRadius: BorderRadius.circular(
                           CustomSizes.SPACE_BETWEEN_SECTIONS),
                       child: Row(
@@ -1247,19 +1271,23 @@ class WebHomeScreen extends Responsive {
                               height: 50, width: 50),
                           Obx(
                             () => Text(
-                                controller.isHoveringWhatsappIcon.isTrue
-                                    ? "  Contact Us Now ..   "
+                                controller.isHoveringContactIcons.isTrue
+                                    ? "  PHONE CALL   "
                                     : "",
-                                style: Theme.of(context).textTheme.titleMedium),
+                                style: Theme.of(context).textTheme.bodyLarge),
                           ),
                         ],
                       ),
                     ),
+
+                    /* ------------------------------------------ SPACER ------------------------------------------ */
                     const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+
+                    /* ------------------------------------------ FLOATING ACTION BUTTON 3 ------------------------------------------ */
                     InkWell(
-                      onTap: () {},
+                      onTap:(){controller.onNavigateToWhatsapp();},
                       hoverColor: CustomColors.GREEN_LIGHT.withOpacity(0.4),
-                      onHover: controller.onUpdateHoverWhatsappIconState,
+                      onHover: controller.onUpdateHoverContactIconsState,
                       borderRadius: BorderRadius.circular(
                           CustomSizes.SPACE_BETWEEN_SECTIONS),
                       child: Row(
@@ -1268,10 +1296,10 @@ class WebHomeScreen extends Responsive {
                               height: 50, width: 50),
                           Obx(
                             () => Text(
-                                controller.isHoveringWhatsappIcon.isTrue
-                                    ? "  Contact Us Now ..   "
+                                controller.isHoveringContactIcons.isTrue
+                                    ? "  WHATSAPP   "
                                     : "",
-                                style: Theme.of(context).textTheme.titleMedium),
+                                style: Theme.of(context).textTheme.bodyLarge),
                           ),
                         ],
                       ),

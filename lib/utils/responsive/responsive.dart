@@ -28,9 +28,7 @@ abstract class Responsive extends StatelessWidget {
 
   bool isDark(BuildContext context) => DeviceUtility.isDark(context);
 
-  Color grayColor(BuildContext context) {
-    return isDark(context) ? CustomColors.GREY_DARK : CustomColors.GREY_DARK;
-  }
+  Color grayColor(BuildContext context)=> CustomColors.GREY_DARK;
 
   Color darkLightColor(BuildContext context) {
     return isDark(context) ? CustomColors.WHITE : CustomColors.BLACK;
