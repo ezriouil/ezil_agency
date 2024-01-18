@@ -15,7 +15,7 @@ class CustomAnimationScreen extends Responsive {
 
   const CustomAnimationScreen(
       {super.key,
-      this.lottieAnime,
+      required this.lottieAnime,
       this.actionText,
       this.onActionClick,
       this.secondActionText,
@@ -28,12 +28,6 @@ class CustomAnimationScreen extends Responsive {
 
   @override
   Widget execute(BuildContext context) {
-    final String animation = lottieAnime != null
-        ? lottieAnime!
-        : isDark(context)
-            ? CustomAnimationStrings.LOADING_WHITE
-            : CustomAnimationStrings.LOADING_BLACK;
-
     return Container(
       alignment: Alignment.center,
       color: isDark(context) ? CustomColors.BLACK : CustomColors.WHITE,
@@ -43,7 +37,7 @@ class CustomAnimationScreen extends Responsive {
         mainAxisAlignment: alignment,
         children: [
           LottieBuilder.asset(
-            animation,
+            lottieAnime!,
             width: getWidth(context) * animationWidth!,
             height: getHeight(context) * animationHeight!,
             repeat: true,

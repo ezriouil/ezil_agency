@@ -28,7 +28,7 @@ class CustomTextAnimWave extends Responsive {
             style: Theme.of(context)
                 .textTheme
                 .titleLarge
-                ?.copyWith(fontSize: 20, color: CustomColors.WHITE))
+                ?.copyWith(fontSize: 20, color: CustomColors.WHITE ,fontFamily: "Vip"))
       ],
     );
   }

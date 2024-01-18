@@ -18,7 +18,7 @@ class CustomProjectCover extends Responsive {
   @override
   Widget execute(BuildContext context) {
     return InkWell(
-      onTap: () => onClick,
+      onTap:onClick,
       onHover: (hover)=>onHover(hover, image),
       borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS),
       child: Stack(fit: StackFit.expand, children: [

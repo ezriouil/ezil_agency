@@ -26,10 +26,6 @@ class CustomPackItemTile extends Responsive {
             style: Theme.of(context)
                 .textTheme
                 .titleSmall
-                ?.copyWith(color: colorTitle ?? darkLightColor(context))));
+                ?.copyWith(color: colorTitle ?? darkLightColor(context),fontFamily: "Cal")));
   }
 }
-/*
- Row(children: [Icon(Icons.done_all_outlined,
-        size: 20, color: primaryColor(context)), Text(title, style: Theme.of(context).textTheme.bodyLarge)],)
- */

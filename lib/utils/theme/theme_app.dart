@@ -7,7 +7,7 @@ import 'package:ezil_agency/utils/theme/custom_theme/custom_input_theme.dart';
 import 'package:ezil_agency/utils/theme/custom_theme/custom_outlined_button_theme.dart';
 import 'package:ezil_agency/utils/theme/custom_theme/custom_text_theme.dart';
 
-class ThemeApp {
+class ThemeApp{
   ThemeApp._();
 
   /// Light Theme

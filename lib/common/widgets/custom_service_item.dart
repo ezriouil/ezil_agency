@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 
 class CustomServiceItem extends Responsive {
   final String imgUrl, header, title;
+  final TextStyle? textSize;
 
-  const CustomServiceItem({super.key, required this.imgUrl, required this.header,required this.title});
+  const CustomServiceItem({super.key, required this.imgUrl, required this.header,required this.title, this.textSize});
 
   @override
   Widget execute(BuildContext context) {
@@ -57,8 +58,7 @@ class CustomServiceItem extends Responsive {
                 vertical: CustomSizes.SPACE_BETWEEN_ITEMS),
             child: Text(
                 title,
-                style:
-                Theme.of(context).textTheme.headlineMedium),
+                style:textSize ?? Theme.of(context).textTheme.headlineMedium),
           )
         ],
       ),

@@ -69,7 +69,9 @@ class WebHomeScreen extends Responsive {
                 const Spacer(),
                 CustomElevatedButton(
                   text: CustomTextStrings.CONTACT_US,
-                  onClick: ()=>controller.onNavigateToContactUsScreen(context),
+                  onClick: () {
+                    controller.onNavigateToContactUsScreen(context);
+                  },
                   width: 120,
                   withDefaultPadding: false,
                 ),
@@ -98,7 +100,7 @@ class WebHomeScreen extends Responsive {
             /* ------------------------------------------ PADDING ------------------------------------------ */
             Padding(
               padding:
-                  const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
+                  const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_SECTIONS * 4),
               child: Column(
                 children: [
                   /* ------------------------------------------ TITLE + ANIMATION ------------------------------------------ */
@@ -149,12 +151,12 @@ class WebHomeScreen extends Responsive {
                   ),
 
                   /* ------------------------------------------ OUR SERVICES ------------------------------------------ */
-                  const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS*4),
                   Text(CustomTextStrings.OUR_SERVICRS,
                       style: Theme.of(context)
                           .textTheme
                           .headlineMedium
-                          ?.copyWith(color: CustomColors.PRIMARY_LIGHT)),
+                          ?.copyWith(fontFamily: "Cal")),
 
                   /* ------------------------------------------ SPACER ------------------------------------------ */
                   const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
@@ -162,7 +164,7 @@ class WebHomeScreen extends Responsive {
                       style: Theme.of(context)
                           .textTheme
                           .headlineLarge
-                          ?.copyWith(fontSize: 40)),
+                          ?.copyWith(fontSize: 40,fontFamily: "Cal")),
 
                   /* ------------------------------------------ SPACER ------------------------------------------ */
                   const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
@@ -207,7 +209,7 @@ class WebHomeScreen extends Responsive {
             /* ------------------------------------------ SOME INFO ------------------------------------------ */
             Container(
               width: getWidth(context),
-              padding: const EdgeInsets.all(CustomSizes.SPACE_DEFAULT),
+              padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_DEFAULT, vertical: CustomSizes.SPACE_BETWEEN_SECTIONS*3),
               decoration: BoxDecoration(
                 color: primaryColor(context),
                 border: Border.all(width: 0.5, color: CustomColors.GREY_DARK),
@@ -218,7 +220,7 @@ class WebHomeScreen extends Responsive {
                       style: Theme.of(context)
                           .textTheme
                           .headlineLarge
-                          ?.copyWith(fontSize: 40, color: CustomColors.WHITE)),
+                          ?.copyWith(fontSize: 40, color: CustomColors.WHITE,fontFamily: "Vip")),
                   const SizedBox(height: CustomSizes.SPACE_DEFAULT),
                   const Row(
                     children: [
@@ -248,20 +250,20 @@ class WebHomeScreen extends Responsive {
             /* ------------------------------------------ OUR DIGITAL SUCCESS ------------------------------------------ */
             Padding(
               padding: const EdgeInsets.symmetric(
-                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS * 3,
+                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS * 4,
                   horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS * 10),
               child: Column(
                 children: [
                   Text("Notre Spécialité Numérique",
-                      style: Theme.of(context).textTheme.headlineLarge),
+                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 40,fontFamily: "Cal")),
 
                   /* ------------------------------------------ SPACER ------------------------------------------ */
                   const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                   Text("Pour plus d'informations, contactez-nous",
-                      style: Theme.of(context).textTheme.titleMedium),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 20,fontFamily: "Cal")),
 
                   /* ------------------------------------------ SPACER ------------------------------------------ */
-                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS*2),
                   const Row(
                     children: [
                       Expanded(
@@ -310,7 +312,7 @@ class WebHomeScreen extends Responsive {
                 style: Theme.of(context)
                     .textTheme
                     .headlineLarge
-                    ?.copyWith(fontSize: 40)),
+                    ?.copyWith(fontSize: 40,fontFamily: "Cal")),
 
             /* ------------------------------------------ SPACER ------------------------------------------ */
             const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
@@ -318,10 +320,11 @@ class WebHomeScreen extends Responsive {
             /* ------------------------------------------ GRID VIEW SUBTITLE ------------------------------------------ */
             Text(
                 "Notre équipe vous accompagne et assure un suivi client de qualité.",
-                style: Theme.of(context).textTheme.titleMedium),
+                style: Theme.of(context).textTheme.titleMedium
+                    ?.copyWith(fontSize: 20,fontFamily: "Cal")),
 
             /* ------------------------------------------ SPACER ------------------------------------------ */
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS*2),
 
 
             /* ------------------------------------------ GRID VIEW ------------------------------------------ */
@@ -336,7 +339,7 @@ class WebHomeScreen extends Responsive {
                   count: controller.projectsBackground.length,
                   itemBuilder: (BuildContext context, int index) => Obx(
                         () => CustomProjectCover(
-                            onClick:controller.onNavigateToServiceScreen,
+                            onClick:(){controller.onNavigateToContactUsScreen(context);},
                             onHover: (hover, img) {
                               controller.onUpdateHoverState(hover);
                               controller.currentHoverItem.value = img;
@@ -367,12 +370,10 @@ class WebHomeScreen extends Responsive {
                       )),
             ),
 
-
-
             /* ------------------------------------------ PACKAGES ------------------------------------------ */
             Padding(
               padding: const EdgeInsets.symmetric(
-                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS*3,
+                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS*4,
                   horizontal: CustomSizes.SPACE_DEFAULT),
               child: Column(
                 children: [
@@ -380,11 +381,12 @@ class WebHomeScreen extends Responsive {
                       style: Theme.of(context)
                           .textTheme
                           .titleLarge
-                          ?.copyWith(color: primaryColor(context))),
+                          ?.copyWith(fontSize: 20,fontFamily: "Cal")),
                   const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
                   Text("Creative Solutions, Transparent Pricing",
-                      style: Theme.of(context).textTheme.headlineLarge),
-                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+                      style: Theme.of(context).textTheme.headlineLarge
+                          ?.copyWith(fontSize: 40,fontFamily: "Cal")),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS*2),
                   Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -401,7 +403,7 @@ class WebHomeScreen extends Responsive {
                           children: [
                             Text("Prime",
                                 style:
-                                    Theme.of(context).textTheme.headlineMedium),
+                                    Theme.of(context).textTheme.headlineLarge?.copyWith(fontFamily: "Vip")),
                             const SizedBox(
                                 height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                             Text(
@@ -469,7 +471,7 @@ class WebHomeScreen extends Responsive {
                                 child: CustomOutlinedButton(
                                     text: "SELECT PLAN",
                                     onClick:
-                                        ()=>controller.onNavigateToContactUsScreen(context),
+                                        (){controller.onNavigateToContactUsScreen(context);},
                                     width: 200,
                                     withDefaultPadding: false))
                           ],
@@ -493,7 +495,7 @@ class WebHomeScreen extends Responsive {
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineMedium
-                                    ?.copyWith(color: CustomColors.WHITE)),
+                                    ?.copyWith(color: CustomColors.WHITE,fontFamily: "Vip")),
                             const SizedBox(
                                 height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                             Text(
@@ -647,7 +649,7 @@ class WebHomeScreen extends Responsive {
                                 child: CustomElevatedButton(
                                     text: "SELECT PLAN",
                                     onClick:
-                                        ()=>controller.onNavigateToContactUsScreen(context),
+                                        (){controller.onNavigateToContactUsScreen(context);},
                                     width: 200,
                                     style: ElevatedButton.styleFrom(
                                         elevation: 0,
@@ -671,7 +673,7 @@ class WebHomeScreen extends Responsive {
                           children: [
                             Text("Start-up",
                                 style:
-                                    Theme.of(context).textTheme.headlineMedium),
+                                    Theme.of(context).textTheme.headlineMedium?.copyWith(fontFamily: "Vip")),
                             const SizedBox(
                                 height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                             Text(
@@ -794,7 +796,7 @@ class WebHomeScreen extends Responsive {
                                 child: CustomOutlinedButton(
                                     text: "SELECT PLAN",
                                     onClick:
-                                        ()=>controller.onNavigateToContactUsScreen(context),
+                                        (){controller.onNavigateToContactUsScreen(context);},
                                     width: 200,
                                     withDefaultPadding: false))
                           ],
@@ -807,63 +809,58 @@ class WebHomeScreen extends Responsive {
             ),
 
             /* ------------------------------------------ OUR VALUES ------------------------------------------ */
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS,
-                  horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS * 4),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ListTile(
-                      leading: Image.asset(
-                        "assets/icons/reactive_icon.png",
-                        height: 100,
-                        width: 100,
-                      ),
-                      title: Text("Réactivité",
-                          style: Theme.of(context).textTheme.headlineMedium),
-                      subtitle: Text(
-                          "Notre équipe se charge de vous donner une réponse rapide sous 48h maximum.",
-                          style: Theme.of(context).textTheme.titleSmall),
+            Row(
+              children: [
+                Expanded(
+                  child: ListTile(
+                    leading: Image.asset(
+                      "assets/icons/reactive_icon.png",
+                      height: 100,
+                      width: 100,
                     ),
+                    title: Text("Réactivité",
+                        style: Theme.of(context).textTheme.headlineMedium),
+                    subtitle: Text(
+                        "Notre équipe se charge de vous donner une réponse rapide sous 48h maximum.",
+                        style: Theme.of(context).textTheme.titleSmall),
                   ),
-                  Expanded(
-                    child: ListTile(
-                      leading: Image.asset(
-                        "assets/icons/performance_icon.png",
-                        height: 100,
-                        width: 100,
-                      ),
-                      title: Text("Performance",
-                          style: Theme.of(context).textTheme.headlineMedium),
-                      subtitle: Text(
-                          "Nous étudions et analysons votre projet digital en mobilisant l’ensemble de nos compétences.",
-                          style: Theme.of(context).textTheme.titleSmall),
+                ),
+                Expanded(
+                  child: ListTile(
+                    leading: Image.asset(
+                      "assets/icons/performance_icon.png",
+                      height: 100,
+                      width: 100,
                     ),
+                    title: Text("Performance",
+                        style: Theme.of(context).textTheme.headlineMedium),
+                    subtitle: Text(
+                        "Nous étudions et analysons votre projet digital en mobilisant l’ensemble de nos compétences.",
+                        style: Theme.of(context).textTheme.titleSmall),
                   ),
-                  Expanded(
-                    child: ListTile(
-                      leading: Image.asset(
-                        "assets/icons/professional_icon.png",
-                        height: 100,
-                        width: 100,
-                      ),
-                      title: Text("Professionnalisme",
-                          style: Theme.of(context).textTheme.headlineMedium),
-                      subtitle: Text(
-                          "Notre équipe a à cœur de réaliser des projets de qualité pour ses clients.",
-                          style: Theme.of(context).textTheme.titleSmall),
+                ),
+                Expanded(
+                  child: ListTile(
+                    leading: Image.asset(
+                      "assets/icons/professional_icon.png",
+                      height: 100,
+                      width: 100,
                     ),
+                    title: Text("Professionnalisme",
+                        style: Theme.of(context).textTheme.headlineMedium),
+                    subtitle: Text(
+                        "Notre équipe a à cœur de réaliser des projets de qualité pour ses clients.",
+                        style: Theme.of(context).textTheme.titleSmall),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
 
             /* ------------------------------------------ PROGRAMMING LANGUAGES ------------------------------------------ */
             Container(
               color: CustomColors.BLACK,
               padding: const EdgeInsets.symmetric(
-                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS * 2,
+                  vertical: CustomSizes.SPACE_BETWEEN_SECTIONS * 3,
                   horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
               child: Row(
                 children: [
@@ -1050,9 +1047,7 @@ class WebHomeScreen extends Responsive {
             Container(
               width: getWidth(context),
               color: CustomColors.BLACK,
-              padding: const EdgeInsets.symmetric(
-                  vertical: CustomSizes.SPACE_DEFAULT,
-                  horizontal: CustomSizes.SPACE_BETWEEN_SECTIONS),
+              padding: const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_SECTIONS),
               child: Column(
                 children: [
                   Row(
@@ -1106,7 +1101,6 @@ class WebHomeScreen extends Responsive {
                   const Divider(color: CustomColors.GREY_DARK),
                   const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
                         child: Column(
@@ -1135,37 +1129,6 @@ class WebHomeScreen extends Responsive {
                                 title: "Les projets",
                                 colorTitle: CustomColors.WHITE,
                                 icon: Iconsax.arrow_right_41),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("CONTACTEZ-NOUS",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium
-                                    ?.copyWith(color: CustomColors.WHITE)),
-                            const SizedBox(
-                                height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                            const CustomPackItemTile(
-                                title: "Maroc : +212 624 778 355",
-                                colorTitle: CustomColors.WHITE,
-                                icon: Iconsax.call_calling),
-                            const CustomPackItemTile(
-                                title: "France : +31 724 778 3655",
-                                colorTitle: CustomColors.WHITE,
-                                icon: Iconsax.call_calling),
-                            const CustomPackItemTile(
-                                title: "Email : Contact@ezil.com",
-                                colorTitle: CustomColors.WHITE,
-                                icon: Icons.alternate_email),
-                            const CustomPackItemTile(
-                                title:
-                                    "MAROC, AGADIR, 80000, HAY SALAM G10 N 384",
-                                colorTitle: CustomColors.WHITE,
-                                icon: Iconsax.location),
                           ],
                         ),
                       ),
@@ -1248,7 +1211,7 @@ class WebHomeScreen extends Responsive {
                             () => Text(
                                 controller.isHoveringContactIcons.isTrue
                                     ? "  EMAIL   "
-                                    : "",
+                                    : "   ",
                                 style: Theme.of(context).textTheme.bodyLarge),
                           ),
                         ],
@@ -1273,7 +1236,7 @@ class WebHomeScreen extends Responsive {
                             () => Text(
                                 controller.isHoveringContactIcons.isTrue
                                     ? "  PHONE CALL   "
-                                    : "",
+                                    : "   ",
                                 style: Theme.of(context).textTheme.bodyLarge),
                           ),
                         ],
@@ -1298,7 +1261,7 @@ class WebHomeScreen extends Responsive {
                             () => Text(
                                 controller.isHoveringContactIcons.isTrue
                                     ? "  WHATSAPP   "
-                                    : "",
+                                    : "   ",
                                 style: Theme.of(context).textTheme.bodyLarge),
                           ),
                         ],

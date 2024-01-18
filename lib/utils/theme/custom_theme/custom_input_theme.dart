@@ -40,7 +40,7 @@ class CustomInputTheme {
     labelStyle:
         const TextStyle().copyWith(fontSize: 14.0, color: CustomColors.WHITE),
     hintStyle:
-        const TextStyle().copyWith(fontSize: 14.0, color: CustomColors.GREY_DARK),
+        const TextStyle().copyWith(fontSize: 14.0, color: CustomColors.WHITE.withOpacity(0.4)),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
     floatingLabelStyle:
         const TextStyle().copyWith(color: CustomColors.BLACK.withOpacity(0.8)),

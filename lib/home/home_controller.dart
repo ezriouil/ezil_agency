@@ -64,19 +64,6 @@ class HomeController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - UPDATE UPGRADE UI SWITCH BUTTON - - - - - - - - - - - - - - - - - -  //
   onUpdateCurrentUpdateUi(bool switched) async {
-    Get.snackbar("Nouveau Thème",
-        "s'il vous plaît attendez, nous sommes en train de changer la couleur du thème",
-        icon: Icon(
-            Get.isDarkMode
-                ? Icons.light_mode_outlined
-                : Icons.dark_mode_outlined,
-            size: 30,
-            color: Get.isDarkMode ? CustomColors.WHITE : CustomColors.BLACK),
-        colorText: Get.isDarkMode ? CustomColors.WHITE : CustomColors.BLACK,
-        duration: const Duration(milliseconds: 1000),
-        margin: const EdgeInsets.all(CustomSizes.SPACE_DEFAULT),
-        overlayBlur: 8);
-    await Future.delayed(const Duration(milliseconds: 1100));
     themeSwitcher.value = switched;
     themeSwitcher.isTrue
         ? Get.changeTheme(ThemeApp.darkTheme)
@@ -96,11 +83,11 @@ class HomeController extends GetxController {
         content: Column(
           children: [
             Text("Get in touch",
-                style: Theme.of(context).textTheme.headlineMedium),
+                style: Theme.of(context).textTheme.headlineLarge),
             const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
             Text("Let's talk about your project",
-                style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
             CustomTextField(
                 hint: "Full Name",
                 leadingIcon: Iconsax.user,
@@ -108,16 +95,16 @@ class HomeController extends GetxController {
                 validator: (value) =>
                     Validator.validateEmptyField("Full Name", value),
                 controller: fullNameController,
-                width: context.width / 3),
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                width: context.width),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS/4),
             CustomTextField(
                 hint: "Phone",
                 leadingIcon: Iconsax.call,
                 textInputType: TextInputType.number,
                 validator: (value) => Validator.validatePasswordField(value),
                 controller: fullNameController,
-                width: context.width / 3),
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                width: context.width),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS/4),
             CustomTextField(
                 hint: "Message",
                 leadingIcon: Iconsax.message,
@@ -125,11 +112,10 @@ class HomeController extends GetxController {
                 validator: (value) =>
                     Validator.validateEmptyField("Message", value),
                 controller: fullNameController,
-                width: context.width / 3),
+                width: context.width),
             const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
-            Text("Choise Votre Plan",
-                style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+            Text("Choise Votre Plan", style: Theme.of(context).textTheme.headlineMedium),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
             Obx(
               () => Row(
                 children: [
@@ -139,6 +125,7 @@ class HomeController extends GetxController {
                             style: Theme.of(context).textTheme.titleLarge),
                         leading: Radio(
                             value: "Prime",
+                            fillColor: MaterialStateProperty.all(Get.isDarkMode?CustomColors.WHITE:CustomColors.BLACK),
                             groupValue: selectedRadioButton.value,
                             onChanged: (String? value) {
                               selectedRadioButton.value = value ?? "Prime";
@@ -151,6 +138,7 @@ class HomeController extends GetxController {
                         leading: Radio(
                             autofocus: true,
                             value: "Business",
+                            fillColor: MaterialStateProperty.all(Get.isDarkMode?CustomColors.WHITE:CustomColors.BLACK),
                             groupValue: selectedRadioButton.value,
                             onChanged: (String? value) {
                               selectedRadioButton.value = value ?? "Business";
@@ -163,6 +151,7 @@ class HomeController extends GetxController {
                         leading: Radio(
                             value: "Start-up",
                             groupValue: selectedRadioButton.value,
+                            fillColor: MaterialStateProperty.all(Get.isDarkMode?CustomColors.WHITE:CustomColors.BLACK),
                             onChanged: (String? value) {
                               selectedRadioButton.value = value ?? "Start-up";
                             })),
@@ -170,14 +159,13 @@ class HomeController extends GetxController {
                 ],
               ),
             ),
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
             CustomElevatedButton(
                 text: "Validate",
                 onClick: () {
                   Get.back();
                 },
-                width: context.width / 7),
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                width: context.width / 2),
           ],
         ));
   }
@@ -199,7 +187,6 @@ class HomeController extends GetxController {
       queryParameters: {'subject': "", 'body': ""},
     );
 
-// To launch the link
     launchUrl(emailLaunchUri);
   }
 
@@ -225,11 +212,6 @@ class HomeController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - PROJECTS BACKGROUND  - - - - - - - - - - - - - - - - - -  //
   final projectsBackground = [
-    /*------------- web sites images -------------*/
-    "assets/images/web_site/hotel_web.jpeg",
-    "assets/images/web_site/ecommerce_web.jpeg",
-    "assets/images/web_site/sport_web.jpeg",
-    "assets/images/web_site/food_web.jpeg",
     /*------------- mobile apps images -------------*/
     "assets/images/mobile_app/clothes_app.png",
     "assets/images/mobile_app/coffee_app.png",
@@ -240,6 +222,11 @@ class HomeController extends GetxController {
     "assets/images/web_app/food_web_app.png",
     "assets/images/web_app/coffee_web_app.jpg",
     "assets/images/web_app/hotel_web_app.jpeg",
+    /*------------- web sites images -------------*/
+    "assets/images/web_site/hotel_web.jpeg",
+    "assets/images/web_site/ecommerce_web.jpeg",
+    "assets/images/web_site/sport_web.jpeg",
+    "assets/images/web_site/food_web.jpeg",
   ];
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //

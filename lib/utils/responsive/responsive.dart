@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:ezil_agency/utils/constants/custom_colors.dart';
 import 'package:ezil_agency/utils/device/device_utility.dart';
+import 'package:flutter/material.dart';
 
 abstract class Responsive extends StatelessWidget {
   const Responsive({super.key});
@@ -11,8 +10,6 @@ abstract class Responsive extends StatelessWidget {
     isDark(context);
     darkLightColor(context);
     primaryColor(context);
-    isMobile(context);
-    isTablet(context);
     return execute(context);
   }
 
@@ -28,7 +25,7 @@ abstract class Responsive extends StatelessWidget {
 
   bool isDark(BuildContext context) => DeviceUtility.isDark(context);
 
-  Color grayColor(BuildContext context)=> CustomColors.GREY_DARK;
+  Color grayColor(BuildContext context) => CustomColors.GREY_DARK;
 
   Color darkLightColor(BuildContext context) {
     return isDark(context) ? CustomColors.WHITE : CustomColors.BLACK;
@@ -39,7 +36,9 @@ abstract class Responsive extends StatelessWidget {
   }
 
   Color yellowColor(BuildContext context) {
-    return isDark(context) ? CustomColors.YELLOW_DARK : CustomColors.YELLOW_LIGHT;
+    return isDark(context)
+        ? CustomColors.YELLOW_DARK
+        : CustomColors.YELLOW_LIGHT;
   }
 
   Color primaryColor(BuildContext context) {
@@ -48,11 +47,36 @@ abstract class Responsive extends StatelessWidget {
         : CustomColors.PRIMARY_DARK;
   }
 
-  bool isTablet(BuildContext context) {
-    return context.isTablet;
+  double spaceBetweenItems({required DeviceType deviceType}) {
+    switch (deviceType) {
+      case DeviceType.MOBILE:
+        return 16.0;
+      case DeviceType.TABLE:
+        return 32.0;
+      case DeviceType.WEB:
+        return 48.0;
+    }
   }
 
-  bool isMobile(BuildContext context) {
-    return context.isPhone;
+  double spaceDefault({required DeviceType deviceType}) {
+    switch (deviceType) {
+      case DeviceType.MOBILE:
+        return 24.0;
+      case DeviceType.TABLE:
+        return 48.0;
+      case DeviceType.WEB:
+        return 72.0;
+    }
+  }
+
+  double spaceBetweenSections({required DeviceType deviceType}) {
+    switch (deviceType) {
+      case DeviceType.MOBILE:
+        return 32.0;
+      case DeviceType.TABLE:
+        return 64.0;
+      case DeviceType.WEB:
+        return 96.0;
+    }
   }
 }
